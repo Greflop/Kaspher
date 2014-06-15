@@ -73,6 +73,9 @@ namespace Projet_2._0
             AddTextures("PlayerWorld2/PlayerGauche3","PlayerGauche3");
             AddTextures("PlayerWorld2/PlayerGauche4","PlayerGauche4");
             AddTextures("Decors/world2vert" , "vert");
+            AddTextures("Particules/particule", "particule");
+            AddTextures("AI/enemy1", "enemy1");
+            AddTextures("AI/enemy1.1", "enemy2");
         }
 
         public void AddTextures(String file, String name = "") 
