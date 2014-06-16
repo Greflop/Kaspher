@@ -208,25 +208,27 @@ namespace Projet_2._0
                     {
                         if (casperHitbox.Bottom <= rect.Top + 50 && casperHitbox.Bottom >= rect.Top)
                         {
-                            Position.Y = rect.Top - 35;
+                            Position.Y = rect.Top - casperHitbox.Height;
                             Velocity.Y = 0f;
                             hasJumped = false;
                         }
                     }
                     if (casperHitbox.Right <= rect.Left + 10 && casperHitbox.Right >= rect.Left)
                     {
-                        Position.X = rect.X - 17;
-                        Velocity.X = -Acceleration.X;
+                        //Position.X = rect.X - 17;
+                        //Velocity.X = -Acceleration.X;
+                        Position.X = rect.X - casperHitbox.Width;
+                        //Velocity.X = - Acceleration.X;
                     }
                     if (casperHitbox.Left >= rect.Right - 10 && casperHitbox.Left <= rect.Right)
                     {
                         Position.X = rect.Right + 1;
-                        Velocity.X = +Acceleration.X;
+                        //Velocity.X = Acceleration.X;
                     }
                     if (casperHitbox.Top >= rect.Bottom - 10 && casperHitbox.Top <= rect.Bottom)
                     {
                         Position.Y = rect.Bottom + 1;
-                        Velocity.Y = 0f;
+                        Velocity.Y = 1f;
                     }
                 }
                 if (Position.Y == rect.Top - 35)

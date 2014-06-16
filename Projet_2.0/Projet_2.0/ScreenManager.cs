@@ -47,7 +47,7 @@ namespace Projet_2._0
         Menu_Pause_Options menupauseoption;
         Decors decors, world2, world2vert1, world2vert2, decors1, decors2;
         public Camera camera;
-
+        AI AI1;
         public Level1 level1;
         Obstacles obstacles;
         KeyboardState keyboardstate, previouskeyboardstate;
@@ -85,7 +85,7 @@ namespace Projet_2._0
             level1 = new Level1(new Vector2(0, 0));
             obstacles = new Obstacles(level1.getList());
             previousgametype = GameType.Exit;
-
+            AI1 = new AI(Content_Manager.getInstance().Textures["enemy1"],Content_Manager.getInstance().Textures["enemy2"], new Rectangle(0, 0, 20, 20));
             this.gametype = gametype;
         }
 
@@ -143,6 +143,7 @@ namespace Projet_2._0
                 case GameType.Menu_Play_Solo_world1_lvl1:
                     camera.update(gametime, casper.Position);
                     casper.update(gametime, controls, gametype, level1);
+                    AI1.update(gametime,960,1290);
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
@@ -232,6 +233,7 @@ namespace Projet_2._0
                     decors1.Draw(spritebatch);
                     decors2.Draw(spritebatch);
                     obstacles.Draw(spritebatch);
+                    AI1.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
