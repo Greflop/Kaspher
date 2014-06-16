@@ -8,8 +8,6 @@ namespace Projet_2._0
 {
     class Resolution
     {
-        public int ScaleX;
-        public int ScaleY;
         public double ScreenWidth;
         public double ScreenHeight;
 
