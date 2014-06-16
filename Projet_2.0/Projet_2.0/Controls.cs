@@ -15,6 +15,7 @@ namespace Projet_2._0
         public Vector2 Velocity;
         public Vector2 Acceleration;
         public GameType gametype;
+        public Rectangle undercasper;
         public float speed;
         public float maxspeed;
         bool hasJumped; //, isontop;
@@ -39,11 +40,14 @@ namespace Projet_2._0
             hasJumped = true;
             level1 = new Level1(new Vector2(0, 0));
             previousPosition = Position;
+            undercasper = new Rectangle((int)Position.X + 16, (int)Position.Y + 34, 16, 34);
         }
 
 
         public void update(GameTime gametime, GameType gametype, Casper casper)
         {
+            undercasper.X = (int)Position.X + 16;
+            undercasper.Y = (int)Position.Y + 34;
             keyboardState = Keyboard.GetState();
             int delta = gametime.ElapsedGameTime.Milliseconds;
             if (keyboardState.IsKeyDown(Keys.S) && previousKeyboardState.IsKeyUp(Keys.S) || keyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down))
@@ -87,10 +91,10 @@ namespace Projet_2._0
                     hasJumped = true;
                 }
 
-                if (hasJumped == true)
+               /* if (hasJumped == true)
                 {
                     Velocity.Y += Acceleration.Y;
-                }
+                }*/
 
 
                 if (Position.Y > 1015)
@@ -101,7 +105,13 @@ namespace Projet_2._0
                 }
 
                 previousKeyboardState = keyboardState;
+                hasJumped = true;
                 Velocity = Collision(casper.Hitbox, level1.getList());
+                if (hasJumped == true)
+                {
+                    Velocity.Y += Acceleration.Y;
+                }
+
                 Position += Velocity * speed;
                 previousPosition = Position;
 
@@ -176,17 +186,22 @@ namespace Projet_2._0
 
         public Vector2 Collision(Rectangle casperHitbox, List<Rectangle> level1)
         {
+            //bool prevhasJumped;
             foreach (Rectangle rect in level1)
             {
+                //if (!(undercasper.Intersects(rect)))
+                  //  hasJumped = true;
+
                 if (casperHitbox.Intersects(rect))
                 {
+
                     if (Velocity.Y < 700)
                     {
                         if (casperHitbox.Bottom <= rect.Top + 7 && casperHitbox.Bottom >= rect.Top)
                         {
                             Position.Y = rect.Top - 35;
                             Velocity.Y = 0f;
-                            hasJumped = false;
+                            hasJumped =false;
                         }
                     }
                     else
@@ -200,6 +215,8 @@ namespace Projet_2._0
                     }
                     if (casperHitbox.Right <= rect.Left + 10 && casperHitbox.Right >= rect.Left)
                     {
+                        //Position.X = rect.X - 17;
+                        //Velocity.X = -Acceleration.X;
                         Position.X = rect.X - casperHitbox.Width;
                         //Velocity.X = - Acceleration.X;
                     }
@@ -214,6 +231,12 @@ namespace Projet_2._0
                         Velocity.Y = 1f;
                     }
                 }
+                if (Position.Y == rect.Top - 35)
+                {
+                    if (casperHitbox.Right >= rect.Left && casperHitbox.Left <= rect.Right)
+                        hasJumped = false;
+                }
+                
                 
                 
             }
@@ -230,6 +253,10 @@ namespace Projet_2._0
             return Velocity;
         }
 
+        public Boolean getHasJumped()
+        {
+            return hasJumped;
+        }
 
     }
 }
