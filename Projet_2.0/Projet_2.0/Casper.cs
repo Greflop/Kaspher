@@ -38,7 +38,7 @@ namespace Projet_2._0
         }
 
 
-        public void update(GameTime gametime, Controls controls, GameType gametype, Level1 level)
+        public void update(GameTime gametime, Controls controls, GameType gametype)
         {
             animation.update(gametime, gametype);
             previousPosition = Position;

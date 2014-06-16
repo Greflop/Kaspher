@@ -47,7 +47,8 @@ namespace Projet_2._0
         Menu_Pause_Options menupauseoption;
         Decors decors, world2, world2vert1, world2vert2, decors1, decors2;
         public Camera camera;
-        AI AI1;
+        AI_basic AI1;
+        AI_moderate AI2;
         public Level1 level1;
         Obstacles obstacles;
         KeyboardState keyboardstate, previouskeyboardstate;
@@ -67,7 +68,7 @@ namespace Projet_2._0
             menupauseoption = new Menu_Pause_Options(Content_Manager.getInstance().Textures["menupauseoption"]);
             casper = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(0, 0, 16, 34));
             player2 = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(50, 50, 16, 34));
-            casper2 = new Casper(Content_Manager.getInstance().Textures["Player1"], new Rectangle(50, 50, 0, 0));
+            casper2 = new Casper(Content_Manager.getInstance().Textures["Player1"], new Rectangle(50, 50, 31, 50));
             controls = new Controls(casper.Position, casper.Velocity, casper.Speed, Keys.W, Keys.A, Keys.D, Keys.S);
             controlsPlayer2 = new Controls(player2.Position, player2.Velocity, player2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
             controlsWorld2 = new Controls(casper2.Position, casper2.Velocity, casper2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
@@ -85,7 +86,8 @@ namespace Projet_2._0
             level1 = new Level1(new Vector2(0, 0));
             obstacles = new Obstacles(level1.getList());
             previousgametype = GameType.Exit;
-            AI1 = new AI(Content_Manager.getInstance().Textures["enemy1"],Content_Manager.getInstance().Textures["enemy2"], new Rectangle(0, 0, 20, 20));
+            AI1 = new AI_basic(Content_Manager.getInstance().Textures["enemy1"],Content_Manager.getInstance().Textures["enemy2"], new Rectangle(0, 0, 20, 20));
+            AI2 = new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(100,100,50,50));
             this.gametype = gametype;
         }
 
@@ -118,15 +120,15 @@ namespace Projet_2._0
                 case GameType.Menu_Play_Multi_Type:
                     // menuMulti.update(gametime, ref gametype, ref previousgametype);
                     camera.update(gametime, casper.Position);
-                    casper.update(gametime, controls, gametype, level1);
-                    player2.update(gametime, controlsPlayer2, gametype, level1);
+                    casper.update(gametime, controls, gametype);
+                    player2.update(gametime, controlsPlayer2, gametype);
 
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
                         previousgametype = GameType.Menu_Play_Multi_Type;
-                        casper.update(gametime, controls, gametype, level1);
-                        player2.update(gametime, controlsPlayer2, gametype, level1);
+                        casper.update(gametime, controls, gametype);
+                        player2.update(gametime, controlsPlayer2, gametype);
 
                         Game1.GetGame().IsMouseVisible = true;
                         MediaPlayer.Stop();
@@ -142,7 +144,7 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl1:
                     camera.update(gametime, casper.Position);
-                    casper.update(gametime, controls, gametype, level1);
+                    casper.update(gametime, controls, gametype);
                     AI1.update(gametime,960,1290);
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
@@ -158,7 +160,8 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
                     camera.update(gametime, casper2.Position);
-                    casper2.update(gametime, controlsPlayer2, gametype, level1);
+                    casper2.update(gametime, controlsPlayer2, gametype);
+                    AI2.update(gametime,casper2);
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
@@ -241,6 +244,7 @@ namespace Projet_2._0
                     world2vert1.Draw(spritebatch);
                     world2vert2.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
+                    AI2.Draw(spritebatch);
                     break;
                 case GameType.Menu_Pause:
                     switch (previousgametype)
