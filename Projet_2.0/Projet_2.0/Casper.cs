@@ -20,6 +20,7 @@ namespace Projet_2._0
         public Animation animation;
         public Vector2 previousPosition;
         public GameType gametype;
+        public Boolean hasJumped;
 
         public Casper(Texture2D casper, Rectangle hitbox) : base(2, casper, hitbox)
         {
@@ -37,6 +38,7 @@ namespace Projet_2._0
             animation.update(gametime, gametype);
             previousPosition = Position;
             controls.update(gametime, gametype, this);
+            hasJumped = controls.getHasJumped();
             Hitbox.X = (int)Position.X;
             Hitbox.Y = (int)Position.Y;
             previousPosition = Position;

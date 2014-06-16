@@ -134,17 +134,18 @@ namespace Projet_2._0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
             screenmanager.Draw(spriteBatch);
-            /*if (IsMouseVisible)
+            if (IsMouseVisible)
             {
                 spriteBatch.DrawString(fontdebug, Convert.ToString(mouseState.X), new Vector2(100, 10), Color.White);
                 spriteBatch.DrawString(fontdebug, Convert.ToString(mouseState.Y), new Vector2(100, 40), Color.White);
             }
             //decors.Draw(spriteBatch);
-            spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getVelocity().X), new Vector2(10, 10), Color.Red);
-            spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getVelocity().Y), new Vector2(10, 25), Color.Red);
-            spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getPosition().X), new Vector2(10, 40), Color.Red);
-            spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getPosition().Y), new Vector2(10, 55), Color.Red);
-            //casper.Draw(spriteBatch);*/
+            spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getVelocity().X), new Vector2(camera.centre.X + 10 , camera.centre.Y + 10 ), Color.Red);
+            spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getVelocity().Y), new Vector2(camera.centre.X + 10, camera.centre.Y + 25), Color.Red);
+            spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getPosition().X), new Vector2(camera.centre.X + 10, camera.centre.Y + 40), Color.Red);
+            spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getPosition().Y), new Vector2(camera.centre.X + 10, camera.centre.Y + 55), Color.Red);
+            spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.hasJumped), new Vector2(camera.centre.X + 10, camera.centre.Y + 70), Color.Red);
+            //casper.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
