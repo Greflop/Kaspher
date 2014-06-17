@@ -71,12 +71,12 @@ namespace Projet_2._0
             casper2 = new Casper(Content_Manager.getInstance().Textures["Player1"], new Rectangle(Res.gI().ScaleX(50), Res.gI().ScaleY(50), Res.gI().ScaleX(31), Res.gI().ScaleY(50)));
             controls = new Controls(casper.Position, casper.Velocity, casper.Speed, Keys.W, Keys.A, Keys.D, Keys.S);
             controlsPlayer2 = new Controls(player2.Position, player2.Velocity, player2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
-            controlsWorld2 = new Controls(casper2.Position, casper2.Velocity, casper2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
+            controlsWorld2 = new Controls(casper2.Position, casper2.Velocity, casper2.Speed, Keys.W, Keys.A, Keys.D, Keys.S);
 
 
 
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
-            game.casperr = casper;
+            Game1.GetGame().casperr = casper;
             decors = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
             decors1 = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(Res.gI().ScaleX(1680), 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
             decors2 = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(Res.gI().ScaleX(-1680), 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
@@ -158,8 +158,13 @@ namespace Projet_2._0
                     previouskeyboardstate = keyboardstate;
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
-                    camera.update(gametime, casper2.Position);
-                    casper2.update(gametime, controlsPlayer2, gametype);
+                    if (casper2.Position.X > Res.gI().ScaleX(840))
+                        camera.update(gametime, casper2.Position);
+                    if (casper2.Position.X > Res.gI().ScaleX(1680))
+                        camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
+
+                    Game1.GetGame().casperr = casper2;
+                    casper2.update(gametime, controlsWorld2, gametype);
                     AI2.update(gametime,casper2);
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
