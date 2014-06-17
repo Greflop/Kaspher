@@ -18,7 +18,7 @@ namespace Projet_2._0
             this.texture1 = texture1;
             this.texture2 = texture2;
             this.hitbox = hitbox;
-            this.Position = new Vector2(1000, 370);
+            this.Position = new Vector2(Res.gI().ScaleX(1000), Res.gI().ScaleY(370));
             this.Velocity = new Vector2(3, 0);
             this.texture = texture1;
         }

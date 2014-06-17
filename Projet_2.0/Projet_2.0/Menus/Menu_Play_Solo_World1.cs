@@ -14,9 +14,9 @@ namespace Projet_2._0
     {
         Rectangle Bouton_Play, Bouton_Exit, Bouton_Options,Bouton_Solo, Bouton_Multi, Bouton_World1, Bouton_World2;
         Texture2D Text_Menu_Play_Solo_World1;
-        Triangle w1 = new Triangle(new Vector2(245, 351), new Vector2(408, 352), new Vector2(328, 202), Triangle.Base.down);
-        Triangle w2 = new Triangle(new Vector2(335, 199), new Vector2(496, 196), new Vector2(417, 344), Triangle.Base.up);
-        Triangle w3 = new Triangle(new Vector2(330, 184), new Vector2(500, 184), new Vector2(417, 34), Triangle.Base.down);
+        Triangle w1 = new Triangle(new Vector2(Res.gI().ScaleX(245), Res.gI().ScaleY(351)), new Vector2(Res.gI().ScaleX(408), Res.gI().ScaleY(352)), new Vector2(Res.gI().ScaleX(328), Res.gI().ScaleY(202)), Triangle.Base.down);
+        Triangle w2 = new Triangle(new Vector2(Res.gI().ScaleX(335), Res.gI().ScaleY(199)), new Vector2(Res.gI().ScaleX(496), Res.gI().ScaleY(196)), new Vector2(Res.gI().ScaleX(417), Res.gI().ScaleY(344)), Triangle.Base.up);
+        Triangle w3 = new Triangle(new Vector2(Res.gI().ScaleX(330), Res.gI().ScaleY(184)), new Vector2(Res.gI().ScaleX(500), Res.gI().ScaleY(184)), new Vector2(Res.gI().ScaleX(417), Res.gI().ScaleY(34)), Triangle.Base.down);
         Rectangle mouseClick;
         KeyboardState keyboardstate, previouskeyboardstate;
         MouseState mouseState, previousmouseState;
@@ -24,13 +24,13 @@ namespace Projet_2._0
         public Menu_Play_Solo_World1(Texture2D Text_Menu_Play_Solo_World1)
         {
             this.Text_Menu_Play_Solo_World1 = Text_Menu_Play_Solo_World1;
-            Bouton_Options = new Rectangle(955, 210, 225, 310);
-            Bouton_Multi = new Rectangle(755, 680, 225, 310);
-            Bouton_Exit = new Rectangle(755, 280, 165, 80);
-            Bouton_Play = new Rectangle(500, 210, 225, 310);
-            Bouton_Solo = new Rectangle(500, 525, 225, 310);
-            Bouton_World1 = new Rectangle(250, 360, 225, 155);
-            Bouton_World2 = new Rectangle(250, 520, 225, 155);
+            Bouton_Options = new Rectangle(Res.gI().ScaleX(955), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_Multi = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(680), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_Exit = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(280), Res.gI().ScaleX(165), Res.gI().ScaleY(80));
+            Bouton_Play = new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_Solo = new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(525), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_World1 = new Rectangle(Res.gI().ScaleX(250), Res.gI().ScaleY(360), Res.gI().ScaleX(225), Res.gI().ScaleY(155));
+            Bouton_World2 = new Rectangle(Res.gI().ScaleX(250), Res.gI().ScaleY(520), Res.gI().ScaleX(225), Res.gI().ScaleY(155));
         }
 
         public void MouseClicked(int x, int y, ref GameType gameType)
@@ -107,7 +107,7 @@ namespace Projet_2._0
 
         public void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(Text_Menu_Play_Solo_World1, new Rectangle(0, 0, Convert.ToInt32(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width), Convert.ToInt32(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height)), Color.White);
+            spritebatch.Draw(Text_Menu_Play_Solo_World1, new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
         }
     }
 }

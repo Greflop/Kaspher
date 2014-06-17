@@ -20,10 +20,10 @@ namespace Projet_2._0
         public Menu_Play(Texture2D Text_Menu_Play)
         {
             this.Text_Menu_Play = Text_Menu_Play;
-            Bouton_Options = new Rectangle(955, 210, 225, 310);
-            Bouton_Solo = new Rectangle(500, 525, 225, 310);
-            Bouton_Multi = new Rectangle(755, 680, 225, 310);
-            Bouton_Exit = new Rectangle(755, 280, 165, 80);
+            Bouton_Options = new Rectangle(Res.gI().ScaleX(955), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_Solo = new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(525), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_Multi = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(680), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_Exit = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(280), Res.gI().ScaleX(165), Res.gI().ScaleY(80));
         }
 
         void MouseClicked(int x, int y, ref GameType gameType)
@@ -71,7 +71,11 @@ namespace Projet_2._0
 
         public void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(Text_Menu_Play, new Rectangle(0, 0, Convert.ToInt32(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width), Convert.ToInt32(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height)), Color.White);
+            spritebatch.Draw(Text_Menu_Play, new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
+            spritebatch.Draw(Text_Menu_Play, new Rectangle(Res.gI().ScaleX(955), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310)), Color.Black);
+            spritebatch.Draw(Text_Menu_Play, new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(525), Res.gI().ScaleX(225), Res.gI().ScaleY(310)), Color.Black);
+            spritebatch.Draw(Text_Menu_Play, new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(680), Res.gI().ScaleX(225), Res.gI().ScaleY(310)), Color.Black);
+            spritebatch.Draw(Text_Menu_Play, new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(280), Res.gI().ScaleX(165), Res.gI().ScaleY(80)), Color.Black);
         }
     }
 }

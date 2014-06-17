@@ -24,10 +24,10 @@ namespace Projet_2._0.Menus
         {
             Position = new Vector2(0, 0);
             this.Text_menu_Pause_Option = Text_menu_Pause_Option;
-            Bouton_Sound = new Rectangle(675, 180, 225, 155);
-            Bouton_screen = new Rectangle(675, 340, 225, 155);
-            Bouton_Resolution = new Rectangle(675, 530, 225, 155);
-            Bouton_Back = new Rectangle(675, 690, 225, 155);
+            Bouton_Sound = new Rectangle(Res.gI().ScaleX(675), Res.gI().ScaleY(180), Res.gI().ScaleX(225), Res.gI().ScaleY(155));
+            Bouton_screen = new Rectangle(Res.gI().ScaleX(675), Res.gI().ScaleY(340), Res.gI().ScaleX(225), Res.gI().ScaleY(155));
+            Bouton_Resolution = new Rectangle(Res.gI().ScaleX(675),Res.gI().ScaleY(530), Res.gI().ScaleX(225), Res.gI().ScaleY(155));
+            Bouton_Back = new Rectangle(Res.gI().ScaleX(675), Res.gI().ScaleY(690), Res.gI().ScaleX(225), Res.gI().ScaleY(155));
         }
 
         void MouseClicked(int x, int y, ref GameType gametype)
@@ -72,7 +72,7 @@ namespace Projet_2._0.Menus
 
         public void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(Text_menu_Pause_Option, new Rectangle((int)Position.X, (int)Position.Y, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height), Color.White);
+            spritebatch.Draw(Text_menu_Pause_Option, new Rectangle((int)Position.X, (int)Position.Y, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
         }
     }
 }

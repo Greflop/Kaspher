@@ -15,7 +15,6 @@ namespace Projet_2._0
         public Vector2 Velocity;
         public Vector2 Acceleration;
         public GameType gametype;
-        public Rectangle undercasper;
         public float speed;
         public float maxspeed;
         bool hasJumped; //, isontop;
@@ -40,14 +39,11 @@ namespace Projet_2._0
             hasJumped = true;
             level1 = new Level1(new Vector2(0, 0));
             previousPosition = Position;
-            undercasper = new Rectangle((int)Position.X + 16, (int)Position.Y + 34, 16, 34);
         }
 
 
         public void update(GameTime gametime, GameType gametype, Casper casper)
         {
-            undercasper.X = (int)Position.X + 16;
-            undercasper.Y = (int)Position.Y + 34;
             keyboardState = Keyboard.GetState();
             int delta = gametime.ElapsedGameTime.Milliseconds;
             if (keyboardState.IsKeyDown(Keys.S) && previousKeyboardState.IsKeyUp(Keys.S) || keyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down))
@@ -97,9 +93,9 @@ namespace Projet_2._0
                 }*/
 
 
-                if (Position.Y > 1015)
+                if (Position.Y > Res.gI().ScaleX(1015))
                 {
-                    Position.Y = 1015f;
+                    Position.Y = Res.gI().ScaleX(1015);
                     Velocity.Y = 0f;
                     hasJumped = false;
                 }
@@ -197,41 +193,41 @@ namespace Projet_2._0
 
                     if (Velocity.Y < 700)
                     {
-                        if (casperHitbox.Bottom <= rect.Top + 7 && casperHitbox.Bottom >= rect.Top)
+                        if (casperHitbox.Bottom <= rect.Top + Res.gI().ScaleY(7) && casperHitbox.Bottom >= rect.Top)
                         {
-                            Position.Y = rect.Top - 35;
+                            Position.Y = rect.Top - Res.gI().ScaleY(35);
                             Velocity.Y = 0f;
                             hasJumped =false;
                         }
                     }
                     else
                     {
-                        if (casperHitbox.Bottom <= rect.Top + 50 && casperHitbox.Bottom >= rect.Top)
+                        if (casperHitbox.Bottom <= rect.Top + Res.gI().ScaleX(50) && casperHitbox.Bottom >= rect.Top)
                         {
-                            Position.Y = rect.Top - casperHitbox.Height;
+                            Position.Y = rect.Top - Res.gI().ScaleY(casperHitbox.Height);
                             Velocity.Y = 0f;
                             hasJumped = false;
                         }
                     }
-                    if (casperHitbox.Right <= rect.Left + 10 && casperHitbox.Right >= rect.Left)
+                    if (casperHitbox.Right <= rect.Left + Res.gI().ScaleX(10) && casperHitbox.Right >= rect.Left)
                     {
                         //Position.X = rect.X - 17;
                         //Velocity.X = -Acceleration.X;
-                        Position.X = rect.X - casperHitbox.Width;
+                        Position.X = rect.X - Res.gI().ScaleX(casperHitbox.Width);
                         //Velocity.X = - Acceleration.X;
                     }
-                    if (casperHitbox.Left >= rect.Right - 10 && casperHitbox.Left <= rect.Right)
+                    if (casperHitbox.Left >= rect.Right - Res.gI().ScaleX(10) && casperHitbox.Left <= rect.Right)
                     {
-                        Position.X = rect.Right + 1;
+                        Position.X = rect.Right + Res.gI().ScaleX(1);
                         //Velocity.X = Acceleration.X;
                     }
-                    if (casperHitbox.Top >= rect.Bottom - 10 && casperHitbox.Top <= rect.Bottom)
+                    if (casperHitbox.Top >= rect.Bottom - Res.gI().ScaleY(10) && casperHitbox.Top <= rect.Bottom)
                     {
-                        Position.Y = rect.Bottom + 1;
+                        Position.Y = rect.Bottom + Res.gI().ScaleY(1);
                         Velocity.Y = 1f;
                     }
                 }
-                if (Position.Y == rect.Top - 35)
+                if (Position.Y == rect.Top - Res.gI().ScaleY(35))
                 {
                     if (casperHitbox.Right >= rect.Left && casperHitbox.Left <= rect.Right)
                         hasJumped = false;

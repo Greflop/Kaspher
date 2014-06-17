@@ -66,34 +66,32 @@ namespace Projet_2._0
             menusolo2 = new Menu_Play_Solo_World2(Content_Manager.getInstance().Textures["solo2"]);
             menuMulti = new Menu_Play_Multi(Content_Manager.getInstance().Textures["menumulti"]);
             menupauseoption = new Menu_Pause_Options(Content_Manager.getInstance().Textures["menupauseoption"]);
-            casper = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(0, 0, 16, 34));
-            player2 = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(50, 50, 16, 34));
-            casper2 = new Casper(Content_Manager.getInstance().Textures["Player1"], new Rectangle(50, 50, 31, 50));
+            casper = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(0, 0, Res.gI().ScaleX(16), Res.gI().ScaleY(34)));
+            player2 = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(Res.gI().ScaleX(50), Res.gI().ScaleY(50), Res.gI().ScaleX(16), Res.gI().ScaleY(34)));
+            casper2 = new Casper(Content_Manager.getInstance().Textures["Player1"], new Rectangle(Res.gI().ScaleX(50), Res.gI().ScaleY(50), Res.gI().ScaleX(31), Res.gI().ScaleY(50)));
             controls = new Controls(casper.Position, casper.Velocity, casper.Speed, Keys.W, Keys.A, Keys.D, Keys.S);
             controlsPlayer2 = new Controls(player2.Position, player2.Velocity, player2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
             controlsWorld2 = new Controls(casper2.Position, casper2.Velocity, casper2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
-            world2vert1 = new Decors(Content_Manager.getInstance().Textures["vert"], new Rectangle(-1680, 0, 1680, 1050));
-            world2vert2 = new Decors(Content_Manager.getInstance().Textures["vert"], new Rectangle(1680, 0, 1680, 1050));
 
 
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
             game.casperr = casper;
-            decors = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(0, 0, 1680, 1050));
-            decors1 = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(1680, 0, 1680, 1050));
-            decors2 = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(-1680, 0, 1680, 1050));
-            world2 = new Decors(Content_Manager.getInstance().Textures["world2"], new Rectangle(0, 0, 1680, 1050));
+            decors = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
+            decors1 = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(Res.gI().ScaleX(1680), 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
+            decors2 = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(Res.gI().ScaleX(-1680), 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
+            world2 = new Decors(Content_Manager.getInstance().Textures["W2L1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             menupause = new Menu_Pause(Content_Manager.getInstance().Textures["menupause"]);
             level1 = new Level1(new Vector2(0, 0));
             obstacles = new Obstacles(level1.getList());
             previousgametype = GameType.Exit;
-            AI1 = new AI_basic(Content_Manager.getInstance().Textures["enemy1"],Content_Manager.getInstance().Textures["enemy2"], new Rectangle(0, 0, 20, 20));
-            AI2 = new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(100,100,50,50));
+            AI1 = new AI_basic(Content_Manager.getInstance().Textures["enemy1"],Content_Manager.getInstance().Textures["enemy2"], new Rectangle(0, 0, Res.gI().ScaleX(20), Res.gI().ScaleY(20)));
+            AI2 = new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(100) ,Res.gI().ScaleY(100),Res.gI().ScaleX(50) ,Res.gI().ScaleY(50)));
             this.gametype = gametype;
         }
 
         public void update(GameTime gametime)
         {
-            camera.update(gametime, new Vector2(840, 0));
+            camera.update(gametime, new Vector2(Res.gI().ScaleX(840), 0));
             keyboardstate = Keyboard.GetState();
             switch (gametype)
             {
@@ -145,7 +143,7 @@ namespace Projet_2._0
                 case GameType.Menu_Play_Solo_world1_lvl1:
                     camera.update(gametime, casper.Position);
                     casper.update(gametime, controls, gametype);
-                    AI1.update(gametime,960,1290);
+                    AI1.update(gametime,Res.gI().ScaleX(960),Res.gI().ScaleY(1290));
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
@@ -241,8 +239,6 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
                     world2.Draw(spritebatch);
-                    world2vert1.Draw(spritebatch);
-                    world2vert2.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
                     AI2.Draw(spritebatch);
                     break;
@@ -263,8 +259,6 @@ namespace Projet_2._0
                             break;
                         case GameType.Menu_Play_Solo_world2_lvl1:
                             world2.Draw(spritebatch);
-                            world2vert1.Draw(spritebatch);
-                            world2vert2.Draw(spritebatch);
                             casper2.Draw(spritebatch, Color.White);
                             break;
                         case GameType.Menu_Play_Multi_Type:
@@ -299,8 +293,6 @@ namespace Projet_2._0
                             break;
                         case GameType.Menu_Play_Solo_world2_lvl1:
                             world2.Draw(spritebatch);
-                            world2vert1.Draw(spritebatch);
-                            world2vert2.Draw(spritebatch);
                             break;
                         case GameType.Menu_Play_Multi_Type:
                             decors.Draw(spritebatch);

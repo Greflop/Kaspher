@@ -27,14 +27,14 @@ namespace Projet_2._0
         public Casper(Texture2D casper, Rectangle hitbox) : base(2, casper, hitbox)
         {
             this.casper = casper;
-            this.Position = new Vector2(840, 250);
+            this.Position = new Vector2(Res.gI().ScaleX(840), Res.gI().ScaleY(250));
             this.Velocity = new Vector2(0,0);
             this.Speed = 0.01f;
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
             animation = new Animation();
             List<Texture2D> textures = new List<Texture2D>();
             textures.Add(Content_Manager.getInstance().Textures["particule"]);
-            particleEngine = new ParticleEngine(textures, new Vector2(400, 240));
+            particleEngine = new ParticleEngine(textures, new Vector2(Res.gI().ScaleX(400), Res.gI().ScaleY(240)));
 
         }
 

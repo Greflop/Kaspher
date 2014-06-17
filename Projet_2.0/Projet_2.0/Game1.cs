@@ -28,6 +28,7 @@ namespace Projet_2._0
         static Game1 game;
         MouseState mouseState;
         public Camera camera;
+        public Res res;
 
         internal bool IsFullScreen
         {
@@ -55,7 +56,7 @@ namespace Projet_2._0
             double ScreenHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
             graphics.PreferredBackBufferWidth = Convert.ToInt32(ScreenWidth);
             graphics.PreferredBackBufferHeight = Convert.ToInt32(ScreenHeight);
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
         }
 
@@ -70,6 +71,7 @@ namespace Projet_2._0
             // TODO: Add your initialization logic here
             //gametime = new GameTime();
             IsMouseVisible = true;
+            //res = new Res();
             //camera = new Camera(GraphicsDevice.Viewport);
             gameState = GameType.Menu_Base_Type;
             base.Initialize();

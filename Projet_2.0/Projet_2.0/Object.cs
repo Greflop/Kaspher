@@ -17,7 +17,7 @@ namespace Projet_2._0
         {
             this.Sprite = Sprite;
             this.Hitbox = Hitbox;
-            Position = new Vector2(Hitbox.X, Hitbox.Y);
+            Position = new Vector2(Res.gI().ScaleX(Hitbox.X), Res.gI().ScaleY(Hitbox.Y));
         }
 
         public Vector2 getPosition()

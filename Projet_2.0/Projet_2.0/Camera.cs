@@ -20,7 +20,7 @@ namespace Projet_2._0.Menus
 
         public void update(GameTime gametime, Vector2 Position)
         {
-            centre = new Vector2(Position.X - 840, 0);
+            centre = new Vector2(Position.X - Res.gI().ScaleX(840), 0);
             transform = Matrix.CreateScale(new Vector3(1,1,0)) *
                 Matrix.CreateTranslation(new Vector3(-centre.X, -centre.Y,0));
         }

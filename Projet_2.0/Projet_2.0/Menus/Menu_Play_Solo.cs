@@ -19,12 +19,12 @@ namespace Projet_2._0
         public Menu_Play_Solo(Texture2D Text_Menu_Play_Solo)
         {
             this.Text_Menu_Play_Solo = Text_Menu_Play_Solo;
-            Bouton_Options = new Rectangle(955, 210, 225, 310);
-            Bouton_Multi = new Rectangle(755, 680, 225, 310);
-            Bouton_Exit = new Rectangle(755, 280, 165, 80);
-            Bouton_Play = new Rectangle(500, 210, 225, 310);
-            Bouton_World1 = new Rectangle(250, 360, 225, 155);
-            Bouton_World2 = new Rectangle(250, 520, 225, 155);
+            Bouton_Options = new Rectangle(Res.gI().ScaleX(955), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_Multi = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(680), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_Exit = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(280), Res.gI().ScaleX(165), Res.gI().ScaleY(80));
+            Bouton_Play = new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
+            Bouton_World1 = new Rectangle(Res.gI().ScaleX(250), Res.gI().ScaleY(360), Res.gI().ScaleX(225), Res.gI().ScaleY(155));
+            Bouton_World2 = new Rectangle(Res.gI().ScaleX(250), Res.gI().ScaleY(520), Res.gI().ScaleX(225), Res.gI().ScaleY(155));
         }
 
         public void MouseClicked(int x, int y, ref GameType gameType)
@@ -77,7 +77,7 @@ namespace Projet_2._0
 
         public void Draw(SpriteBatch spritebatch)
         {
-            spritebatch.Draw(Text_Menu_Play_Solo, new Rectangle(0, 0, Convert.ToInt32(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width), Convert.ToInt32(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height)), Color.White);
+            spritebatch.Draw(Text_Menu_Play_Solo, new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
         }
     }
 }
