@@ -11,26 +11,44 @@ namespace Projet_2._0
     {
         public Texture2D texture;
         public Rectangle hitbox;
+        public Rectangle aggro;
+
 
         public AI_moderate(Texture2D texture, Rectangle hitbox)
             : base(texture, hitbox)
         {
             this.texture = texture;
             this.hitbox = hitbox;
+            aggro = new Rectangle(hitbox.X - Res.gI().ScaleX(350) / 2, hitbox.Y - Res.gI().ScaleY(350)/2, Res.gI().ScaleX(500), Res.gI().ScaleY(500));
+            Direction = new Vector2(0, 0);
+            Velocity = new Vector2(2.5f,2.5f);
+            Position = new Vector2(0, 0);
         }
 
         public void update(GameTime gametime, Casper casper)
         {
-            if (hitbox.Intersects(casper.Hitbox))
+            if (aggro.Intersects(casper.Hitbox))
             {
-                Game1.GetGame().Exit();
+                if (!hitbox.Intersects(casper.Hitbox))
+                {
+                    Direction = new Vector2(casper.Position.X - hitbox.X, casper.Position.Y - hitbox.Y);
+                    Direction.Normalize();
+                    Position.X = hitbox.X;
+                    Position.Y = hitbox.Y;
+                    Position += Direction * Velocity;
+                    hitbox.X = (int)Position.X;
+                    hitbox.Y = (int)Position.Y;
+                }
             }
-        
+            aggro.X = hitbox.X - Res.gI().ScaleX(500) / 2;
+            aggro.Y = hitbox.Y - Res.gI().ScaleY(500) / 2;
         }
 
         public void Draw(SpriteBatch spritebatch)
         {
+            //spritebatch.Draw(texture, aggro, Color.Black);
             spritebatch.Draw(texture, hitbox, Color.White);
+            
         }
     }
 }

@@ -40,17 +40,27 @@ Content\PlayerWorld2\PlayerGauche3.xnb
 Content\PlayerWorld2\PlayerGauche4.xnb
 Content\PlayerWorld2\PlayerHaut1.xnb
 Content\Decors\world2vert.xnb
+<<<<<<< HEAD
+=======
+Content\Particules\particule.xnb
+Content\AI\enemy1.xnb
+Content\AI\enemy1.1.xnb
+Content\Niveaux\World2_lvl1.xnb
+>>>>>>> 5a6737cf8a4af4767c484a54c3f0a028bc4bc04d
 Content\Fontdebug.xnb
 Content\Songs\Ambiance.xnb
 Content\Songs\Ambiance_Pause.xnb
 Content\Songs\Ambiance_ingame.xnb
 Content\Songs\Jump.xnb
+<<<<<<< HEAD
 Content\Particules\particule.xnb
 Content\AI\enemy1.xnb
 Content\AI\enemy1.1.xnb
 Content\Niveaux\World2_lvl1.xnb
 Content\Niveaux\W1L1_1.xnb
 Content\Niveaux\W1L1_2.xnb
+=======
+>>>>>>> 5a6737cf8a4af4767c484a54c3f0a028bc4bc04d
 Content\Songs\Ambiance.wma
 Content\Songs\Ambiance_Pause.wma
 Content\Songs\Ambiance_ingame.wma
