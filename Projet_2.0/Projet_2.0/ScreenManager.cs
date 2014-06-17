@@ -45,7 +45,7 @@ namespace Projet_2._0
         Menu_Play_Solo_World2 menusolo2;
         Menu_Pause menupause;
         Menu_Pause_Options menupauseoption;
-        Decors decors, world2, world2vert1, world2vert2, decors1, decors2;
+        Decors decors, world2, decors1, decors2;
         public Camera camera;
         AI_basic AI1;
         AI_moderate AI2;
@@ -72,6 +72,7 @@ namespace Projet_2._0
             controls = new Controls(casper.Position, casper.Velocity, casper.Speed, Keys.W, Keys.A, Keys.D, Keys.S);
             controlsPlayer2 = new Controls(player2.Position, player2.Velocity, player2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
             controlsWorld2 = new Controls(casper2.Position, casper2.Velocity, casper2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
+
 
 
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
