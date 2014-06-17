@@ -66,12 +66,12 @@ namespace Projet_2._0
             menusolo2 = new Menu_Play_Solo_World2(Content_Manager.getInstance().Textures["solo2"]);
             menuMulti = new Menu_Play_Multi(Content_Manager.getInstance().Textures["menumulti"]);
             menupauseoption = new Menu_Pause_Options(Content_Manager.getInstance().Textures["menupauseoption"]);
-            casper = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(0, 0, 16, 34));
+            casper = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(840, 250, 16, 34));
             player2 = new Casper(Content_Manager.getInstance().Textures["Casper"], new Rectangle(50, 50, 16, 34));
             casper2 = new Casper(Content_Manager.getInstance().Textures["Player1"], new Rectangle(50, 50, 31, 50));
             controls = new Controls(casper.Position, casper.Velocity, casper.Speed, Keys.W, Keys.A, Keys.D, Keys.S);
             controlsPlayer2 = new Controls(player2.Position, player2.Velocity, player2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
-            controlsWorld2 = new Controls(casper2.Position, casper2.Velocity, casper2.Speed, Keys.Up, Keys.Left, Keys.Right, Keys.Down);
+            controlsWorld2 = new Controls(casper2.Position, casper2.Velocity, casper2.Speed, Keys.W, Keys.A, Keys.D, Keys.S);
             world2vert1 = new Decors(Content_Manager.getInstance().Textures["vert"], new Rectangle(-1680, 0, 1680, 1050));
             world2vert2 = new Decors(Content_Manager.getInstance().Textures["vert"], new Rectangle(1680, 0, 1680, 1050));
 

@@ -50,8 +50,6 @@ namespace Projet_2._0
             undercasper.Y = (int)Position.Y + 34;
             keyboardState = Keyboard.GetState();
             int delta = gametime.ElapsedGameTime.Milliseconds;
-            if (keyboardState.IsKeyDown(Keys.S) && previousKeyboardState.IsKeyUp(Keys.S) || keyboardState.IsKeyDown(Keys.Down) && previousKeyboardState.IsKeyUp(Keys.Down))
-                hasJumped = true;
 
             if (gametype == GameType.Menu_Play_Solo_world1_lvl1 || gametype == GameType.Menu_Play_Solo_world1_lvl2 || gametype == GameType.Menu_Play_Solo_world1_lvl3 || gametype == GameType.Menu_Play_Multi_Type)
             {
@@ -84,12 +82,7 @@ namespace Projet_2._0
                     else if (Velocity.X < maxspeed)
                         Velocity.X += Acceleration.X;
                 }
-                if (keyboardState.IsKeyDown(Up) && hasJumped == false)
-                {
-                    SoundManager.jump.Play();
-                    Velocity.Y += -600;
-                    hasJumped = true;
-                }
+                
 
                /* if (hasJumped == true)
                 {
@@ -107,6 +100,16 @@ namespace Projet_2._0
                 previousKeyboardState = keyboardState;
                 hasJumped = true;
                 Velocity = Collision(casper.Hitbox, level1.getList());
+                if (keyboardState.IsKeyDown(Up) && hasJumped == false)
+                {
+                    SoundManager.jump.Play();
+                    Velocity.Y += -600;
+                    hasJumped = true;
+                }
+                if (keyboardState.IsKeyDown(Down) && hasJumped == true)
+                {
+                    Velocity.Y += Acceleration.Y;
+                }
                 if (hasJumped == true)
                 {
                     Velocity.Y += Acceleration.Y;
@@ -257,6 +260,8 @@ namespace Projet_2._0
         {
             return hasJumped;
         }
+
+        //public Vector2 Collision2(Rectangle casperHitbox, )
 
     }
 }

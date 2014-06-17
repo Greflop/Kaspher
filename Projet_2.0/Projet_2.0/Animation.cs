@@ -89,7 +89,7 @@ namespace Projet_2._0
             {
                 if (state == State.Basic)
                     texture = Content_Manager.getInstance().Textures["Player1"];
-                else if (state == State.Right)
+                else if (state == State.Right || state == State.TopRight)
                 {
                     if (delta < 15)
                         texture = Content_Manager.getInstance().Textures["PlayerDroite1"];
@@ -100,7 +100,7 @@ namespace Projet_2._0
                     else if (delta < 60)
                         texture = Content_Manager.getInstance().Textures["PlayerDroite4"];
                 }
-                else if (state == State.Left)
+                else if (state == State.Left || state == State.TopLeft)
                 {
                     if (delta < 15)
                         texture = Content_Manager.getInstance().Textures["PlayerGauche1"];
@@ -126,7 +126,7 @@ namespace Projet_2._0
                 {
                     if (delta < 15)
                         texture = Content_Manager.getInstance().Textures["Player1"];
-                    if (delta < 30)
+                    else if (delta < 30)
                         texture = Content_Manager.getInstance().Textures["PlayerBas2"];
                     else if (delta < 45)
                         texture = Content_Manager.getInstance().Textures["PlayerBas3"];
@@ -139,7 +139,7 @@ namespace Projet_2._0
 
         public void update(GameTime gametime, GameType gametype)
         {
-            if (state == State.Left || state == State.Right)
+            if (state == State.Left || state == State.Right || state == State.Falling || state == State.Top || state == State.TopLeft || state == State.TopRight)
                 delta++;
             if (delta > 60)
                 delta = 0;

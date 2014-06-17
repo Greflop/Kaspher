@@ -27,7 +27,7 @@ namespace Projet_2._0
         public Casper(Texture2D casper, Rectangle hitbox) : base(2, casper, hitbox)
         {
             this.casper = casper;
-            this.Position = new Vector2(840, 250);
+            this.Position = new Vector2(hitbox.X, hitbox.Y);
             this.Velocity = new Vector2(0,0);
             this.Speed = 0.01f;
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
