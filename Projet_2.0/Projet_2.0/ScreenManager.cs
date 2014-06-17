@@ -45,7 +45,7 @@ namespace Projet_2._0
         Menu_Play_Solo_World2 menusolo2;
         Menu_Pause menupause;
         Menu_Pause_Options menupauseoption;
-        Decors decors, world2, decors1, decors2;
+        Decors decors, world2, decors1, decors2, decorstest1, decorstest2;
         public Camera camera;
         AI_basic AI1;
         AI_moderate AI2;
@@ -77,6 +77,8 @@ namespace Projet_2._0
 
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
             game.casperr = casper;
+            decorstest1 = new Decors(Content_Manager.getInstance().Textures["W1L1_1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
+            decorstest2 = new Decors(Content_Manager.getInstance().Textures["W1L1_2"], new Rectangle(2520, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             decors = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
             decors1 = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(Res.gI().ScaleX(1680), 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
             decors2 = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(Res.gI().ScaleX(-1680), 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
@@ -231,10 +233,12 @@ namespace Projet_2._0
                     menuoptions.Draw(spritebatch);
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl1:
-                    decors.Draw(spritebatch);
+                    /*decors.Draw(spritebatch);
                     decors1.Draw(spritebatch);
                     decors2.Draw(spritebatch);
-                    obstacles.Draw(spritebatch);
+                    obstacles.Draw(spritebatch);*/
+                    decorstest1.Draw(spritebatch);
+                    decorstest2.Draw(spritebatch);
                     AI1.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     break;
@@ -247,10 +251,12 @@ namespace Projet_2._0
                     switch (previousgametype)
                     {
                         case GameType.Menu_Play_Solo_world1_lvl1:
-                            decors.Draw(spritebatch);
+                            /*decors.Draw(spritebatch);
                             decors1.Draw(spritebatch);
                             decors2.Draw(spritebatch);
-                            obstacles.Draw(spritebatch);
+                            obstacles.Draw(spritebatch);*/
+                            decorstest1.Draw(spritebatch);
+                            decorstest2.Draw(spritebatch);
                             break;
                         case GameType.Menu_Play_Solo_world1_lvl2:
                             //decors lvl2
@@ -281,10 +287,12 @@ namespace Projet_2._0
                     switch (previousgametype)
                     {
                         case GameType.Menu_Play_Solo_world1_lvl1:
-                            decors.Draw(spritebatch);
+                            /*decors.Draw(spritebatch);
                             decors1.Draw(spritebatch);
                             decors2.Draw(spritebatch);
-                            obstacles.Draw(spritebatch);
+                            obstacles.Draw(spritebatch);*/
+                            decorstest1.Draw(spritebatch);
+                            decorstest2.Draw(spritebatch);
                             break;
                         case GameType.Menu_Play_Solo_world1_lvl2:
                             //decors lvl2
