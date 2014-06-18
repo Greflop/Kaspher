@@ -72,10 +72,6 @@ namespace Projet_2._0
         public void Draw(SpriteBatch spritebatch)
         {
             spritebatch.Draw(Text_Menu_Play, new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
-            spritebatch.Draw(Text_Menu_Play, new Rectangle(Res.gI().ScaleX(955), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310)), Color.Black);
-            spritebatch.Draw(Text_Menu_Play, new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(525), Res.gI().ScaleX(225), Res.gI().ScaleY(310)), Color.Black);
-            spritebatch.Draw(Text_Menu_Play, new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(680), Res.gI().ScaleX(225), Res.gI().ScaleY(310)), Color.Black);
-            spritebatch.Draw(Text_Menu_Play, new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(280), Res.gI().ScaleX(165), Res.gI().ScaleY(80)), Color.Black);
         }
     }
 }
