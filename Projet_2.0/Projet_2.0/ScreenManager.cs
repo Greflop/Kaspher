@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Projet_2._0.Menus;
+using Projet_2._0.Levels;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
@@ -28,6 +29,8 @@ namespace Projet_2._0
         Menu_Play_Solo_world1_lvl2,
         Menu_Play_Solo_world1_lvl3,
         Menu_Play_Solo_world2_lvl1,
+        Menu_Play_Solo_world2_lvl2,
+        Menu_Play_Solo_world2_lvl3,
     }
 
     class ScreenManager
@@ -45,17 +48,18 @@ namespace Projet_2._0
         Menu_Play_Solo_World2 menusolo2;
         Menu_Pause menupause;
         Menu_Pause_Options menupauseoption;
-        Decors decors, world2, decors1, decors2, decorstest1, decorstest2;
+        Decors decors, world2, decors1, decors2, d_w1l1_1, d_w1l1_2;
         public Camera camera;
         AI_basic AI1;
         AI_moderate AI2;
-        public Level1 level1;
-        Obstacles obstacles;
         KeyboardState keyboardstate, previouskeyboardstate;
-
         public Controls controls, controlsPlayer2, controlsWorld2;
-
-
+        W2L1 w2l1;
+        W2L2 w2l2;
+        W2L3 w2l3;
+        W1L1 w1l1;
+        W1L2 w1l2;
+        W1L3 w1l3;
         public ScreenManager(GameType gametype, Game1 game)
         {
             menubase = new Menu_Base(Content_Manager.getInstance().Textures["menubase"]);
@@ -77,16 +81,20 @@ namespace Projet_2._0
 
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
 
-            decorstest1 = new Decors(Content_Manager.getInstance().Textures["W1L1_1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
-            decorstest2 = new Decors(Content_Manager.getInstance().Textures["W1L1_2"], new Rectangle(2520, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
+            d_w1l1_1 = new Decors(Content_Manager.getInstance().Textures["W1L1_1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
+            d_w1l1_2 = new Decors(Content_Manager.getInstance().Textures["W1L1_2"], new Rectangle(2520, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             Game1.GetGame().casperr = casper;
             /*decors = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
             decors1 = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(Res.gI().ScaleX(1680), 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));
             decors2 = new Decors(Content_Manager.getInstance().Textures["Level1"], new Rectangle(Res.gI().ScaleX(-1680), 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)));*/
             world2 = new Decors(Content_Manager.getInstance().Textures["W2L1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             menupause = new Menu_Pause(Content_Manager.getInstance().Textures["menupause"]);
-            level1 = new Level1(new Vector2(0, 0));
-            obstacles = new Obstacles(level1.getList());
+            w1l1 = new W1L1(new Vector2(0, 0));
+            w1l2 = new W1L2(new Vector2(0, 0));
+            w1l3 = new W1L3(new Vector2(0, 0));
+            w2l1 = new W2L1(new Vector2(0, 0));
+            w2l2 = new W2L2(new Vector2(0, 0));
+            w2l3 = new W2L3(new Vector2(0, 0));
             previousgametype = GameType.Exit;
             AI1 = new AI_basic(Content_Manager.getInstance().Textures["enemy1"],Content_Manager.getInstance().Textures["enemy2"], new Rectangle(0, 0, Res.gI().ScaleX(20), Res.gI().ScaleY(20)));
             AI2 = new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(100) ,Res.gI().ScaleY(100),Res.gI().ScaleX(50) ,Res.gI().ScaleY(50)));
@@ -122,15 +130,15 @@ namespace Projet_2._0
                 case GameType.Menu_Play_Multi_Type:
                     // menuMulti.update(gametime, ref gametype, ref previousgametype);
                     camera.update(gametime, casper.Position);
-                    casper.update(gametime, controls, gametype);
-                    player2.update(gametime, controlsPlayer2, gametype);
+                    casper.update(gametime, controls, gametype, w1l1.getList());
+                    player2.update(gametime, controlsPlayer2, gametype, w1l1.getList());
 
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
                         previousgametype = GameType.Menu_Play_Multi_Type;
-                        casper.update(gametime, controls, gametype);
-                        player2.update(gametime, controlsPlayer2, gametype);
+                        casper.update(gametime, controls, gametype, w1l1.getList());
+                        player2.update(gametime, controlsPlayer2, gametype, w1l1.getList());
 
                         Game1.GetGame().IsMouseVisible = true;
                         MediaPlayer.Stop();
@@ -146,7 +154,7 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl1:
                     camera.update(gametime, casper.Position);
-                    casper.update(gametime, controls, gametype);
+                    casper.update(gametime, controls, gametype, w1l1.getList());
                     AI1.update(gametime,Res.gI().ScaleX(960),Res.gI().ScaleY(1290));
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
@@ -160,6 +168,10 @@ namespace Projet_2._0
                     }
                     previouskeyboardstate = keyboardstate;
                     break;
+                case GameType.Menu_Play_Solo_world1_lvl2:
+                    break;
+                case GameType.Menu_Play_Solo_world1_lvl3:
+                    break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
                     if (casper2.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper2.Position);
@@ -167,7 +179,7 @@ namespace Projet_2._0
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
 
                     Game1.GetGame().casperr = casper2;
-                    casper2.update(gametime, controlsWorld2, gametype);
+                    casper2.update(gametime, controlsWorld2, gametype,w2l1.getList());
                     AI2.update(gametime,casper2);
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
@@ -181,6 +193,10 @@ namespace Projet_2._0
                     }
                     previouskeyboardstate = keyboardstate;
 
+                    break;
+                case GameType.Menu_Play_Solo_world2_lvl2:
+                    break;
+                case GameType.Menu_Play_Solo_world2_lvl3:
                     break;
                 case GameType.Exit:
                     Game1.GetGame().Exit();
@@ -231,7 +247,6 @@ namespace Projet_2._0
                     decors.Draw(spritebatch);
                     decors1.Draw(spritebatch);
                     decors2.Draw(spritebatch);
-                    obstacles.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     player2.Draw(spritebatch, Color.CornflowerBlue);
                     break;
@@ -243,8 +258,8 @@ namespace Projet_2._0
                     decors1.Draw(spritebatch);
                     decors2.Draw(spritebatch);
                     obstacles.Draw(spritebatch);*/
-                    decorstest1.Draw(spritebatch);
-                    decorstest2.Draw(spritebatch);
+                    d_w1l1_1.Draw(spritebatch);
+                    d_w1l1_2.Draw(spritebatch);
                     AI1.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     break;
@@ -261,8 +276,8 @@ namespace Projet_2._0
                             decors1.Draw(spritebatch);
                             decors2.Draw(spritebatch);
                             obstacles.Draw(spritebatch);*/
-                            decorstest1.Draw(spritebatch);
-                            decorstest2.Draw(spritebatch);
+                            d_w1l1_1.Draw(spritebatch);
+                            d_w1l1_2.Draw(spritebatch);
                             break;
                         case GameType.Menu_Play_Solo_world1_lvl2:
                             //decors lvl2
@@ -274,11 +289,14 @@ namespace Projet_2._0
                             world2.Draw(spritebatch);
                             casper2.Draw(spritebatch, Color.White);
                             break;
+                        case GameType.Menu_Play_Solo_world2_lvl2:
+                            break;
+                        case GameType.Menu_Play_Solo_world2_lvl3:
+                            break;
                         case GameType.Menu_Play_Multi_Type:
                             decors.Draw(spritebatch);
                             decors1.Draw(spritebatch);
                             decors2.Draw(spritebatch);
-                            obstacles.Draw(spritebatch);
                             casper.Draw(spritebatch, Color.White);
                             player2.Draw(spritebatch, Color.CornflowerBlue);
                             break;
@@ -297,8 +315,8 @@ namespace Projet_2._0
                             decors1.Draw(spritebatch);
                             decors2.Draw(spritebatch);
                             obstacles.Draw(spritebatch);*/
-                            decorstest1.Draw(spritebatch);
-                            decorstest2.Draw(spritebatch);
+                            d_w1l1_1.Draw(spritebatch);
+                            d_w1l1_2.Draw(spritebatch);
                             break;
                         case GameType.Menu_Play_Solo_world1_lvl2:
                             //decors lvl2
@@ -313,7 +331,6 @@ namespace Projet_2._0
                             decors.Draw(spritebatch);
                             decors1.Draw(spritebatch);
                             decors2.Draw(spritebatch);
-                            obstacles.Draw(spritebatch);
                             casper.Draw(spritebatch, Color.White);
                             player2.Draw(spritebatch, Color.CornflowerBlue);
 

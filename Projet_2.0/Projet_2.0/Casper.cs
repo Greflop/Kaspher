@@ -39,11 +39,11 @@ namespace Projet_2._0
         }
 
 
-        public void update(GameTime gametime, Controls controls, GameType gametype)
+        public void update(GameTime gametime, Controls controls, GameType gametype, List<Rectangle> level)
         {
             animation.update(gametime, gametype);
             previousPosition = Position;
-            controls.update(gametime, gametype, this);
+            controls.update(gametime, gametype, this, level);
             hasJumped = controls.getHasJumped();
             Hitbox.X = (int)Position.X;
             Hitbox.Y = (int)Position.Y;

@@ -42,7 +42,7 @@ namespace Projet_2._0
         }
 
 
-        public void update(GameTime gametime, GameType gametype, Casper casper)
+        public void update(GameTime gametime, GameType gametype, Casper casper, List<Rectangle> level)
         {
             keyboardState = Keyboard.GetState();
             int delta = gametime.ElapsedGameTime.Milliseconds;
@@ -95,7 +95,7 @@ namespace Projet_2._0
 
                 previousKeyboardState = keyboardState;
                 hasJumped = true;
-                Velocity = Collision(casper.Hitbox, level1.getList());
+                Velocity = Collision(casper.Hitbox, level);
                 if (keyboardState.IsKeyDown(Up) && hasJumped == false)
                 {
                     SoundManager.jump.Play();
