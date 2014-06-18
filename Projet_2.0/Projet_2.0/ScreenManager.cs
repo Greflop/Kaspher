@@ -358,7 +358,27 @@ namespace Projet_2._0
                     previouskeyboardstate = keyboardstate;
                     break;
                 case GameType.Menu_Pause_Option:
-                    camera.update(gametime, casper.Position);
+                    //camera.update(gametime, casper.Position);
+                    if (previousgametype == GameType.Menu_Play_Solo_world2_lvl1 || previousgametype == GameType.Menu_Play_Solo_world2_lvl2 || previousgametype == GameType.Menu_Play_Solo_world2_lvl3)
+                    {
+                        if (true)
+                        {
+                            if (casper2.Position.X > Res.gI().ScaleX(840))
+                                camera.update(gametime, casper2.Position);
+                            if (casper2.Position.X > Res.gI().ScaleX(1680))
+                                camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
+                        }
+                    }
+                    if (previousgametype == GameType.Menu_Play_Solo_world1_lvl1 || previousgametype == GameType.Menu_Play_Solo_world1_lvl2 || previousgametype == GameType.Menu_Play_Solo_world1_lvl3)
+                    {
+                        if (true)
+                        {
+                            if (casper.Position.X > Res.gI().ScaleX(840))
+                                camera.update(gametime, casper.Position);
+                            if (casper.Position.X > Res.gI().ScaleX(4200))
+                                camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
+                        }
+                    }
                     menupauseoption.update(gametime, ref gametype, ref previousgametype, camera.centre);
                     break;
                 default:
