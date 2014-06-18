@@ -27,7 +27,7 @@ namespace Projet_2._0
         public Casper(Texture2D casper, Rectangle hitbox) : base(2, casper, hitbox)
         {
             this.casper = casper;
-            this.Position = new Vector2(Res.gI().ScaleX(840), Res.gI().ScaleY(250));
+            this.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(925));
             this.Velocity = new Vector2(0,0);
             this.Speed = 0.01f;
             camera = new Camera(Game1.GetGame().GraphicsDevice.Viewport);
@@ -43,10 +43,11 @@ namespace Projet_2._0
         {
             animation.update(gametime, gametype);
             previousPosition = Position;
-            controls.update(gametime, gametype, this, level);
+            //controls.update(gametime, gametype, this, level);
             hasJumped = controls.getHasJumped();
             Hitbox.X = (int)Position.X;
             Hitbox.Y = (int)Position.Y;
+            controls.update(gametime, gametype, this, level);
             previousPosition = Position;
             Position = controls.getPosition();
             Velocity = controls.getVelocity();
