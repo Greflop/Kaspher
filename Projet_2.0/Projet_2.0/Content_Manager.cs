@@ -80,6 +80,7 @@ namespace Projet_2._0
             AddTextures("Niveaux/W1L1_2", "W1L1_2");
             AddTextures("Niveaux/W1L2_1", "W1L2_1");
             AddTextures("Niveaux/W1L2_2", "W1L2_2");
+            AddTextures("Niveaux/W1L3", "W1L3");
             AddTextures("Niveaux/World2_lvl1", "W2L1");
             AddTextures("Niveaux/World2_lvl2", "W2L2");
             AddTextures("Niveaux/World2_lvl3", "W2L3");

@@ -49,7 +49,7 @@ namespace Projet_2._0
         Menu_Play_Solo_World2 menusolo2;
         Menu_Pause menupause;
         Menu_Pause_Options menupauseoption;
-        Decors  d_w2l1, d_w2l2, d_w2l3, d_w1l1_1, d_w1l1_2, d_w1l2_1, d_w1l2_2, d_w1l3_1, d_w1l3_2;
+        Decors  d_w2l1, d_w2l2, d_w2l3, d_w1l1_1, d_w1l1_2, d_w1l2_1, d_w1l2_2, d_w1l3;
         public Camera camera;
         AI_basic AI1;
         AI_moderate AI2;
@@ -87,8 +87,7 @@ namespace Projet_2._0
             d_w1l1_2 = new Decors(Content_Manager.getInstance().Textures["W1L1_2"], new Rectangle(Res.gI().ScaleX(2520), 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             d_w1l2_1 = new Decors(Content_Manager.getInstance().Textures["W1L2_1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             d_w1l2_2 = new Decors(Content_Manager.getInstance().Textures["W1L2_2"], new Rectangle(Res.gI().ScaleX(2520), 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
-            //d_w1l3_1 = new Decors(Content_Manager.getInstance().Textures["W1L3_1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
-            //d_w1l3_2 = new Decors(Content_Manager.getInstance().Textures["W1L3_2"], new Rectangle(2520, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
+            d_w1l3 = new Decors(Content_Manager.getInstance().Textures["W1L3"], new Rectangle(0, 0, Res.gI().ScaleX(2240), Res.gI().ScaleY(1050)));
 
             Game1.GetGame().casperr = casper;
             d_w2l1 = new Decors(Content_Manager.getInstance().Textures["W2L1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
@@ -220,7 +219,7 @@ namespace Projet_2._0
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
                     if (previousgametype == GameType.Menu_Play_Solo_World1_Type && respawn == true)
                     {
-                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(925));
+                        controls.Position = new Vector2(Res.gI().ScaleX(80), Res.gI().ScaleY(550));//spawn position
                         respawn = false;
                     }
                     if (casper.Position.X > Res.gI().ScaleX(840))
@@ -408,8 +407,7 @@ namespace Projet_2._0
                     // IA
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl3:
-                    //      image w1l3_1
-                    //      image w1l3_1
+                    d_w1l3.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     // IA
                     break;
@@ -445,8 +443,7 @@ namespace Projet_2._0
                             // IA
                             break;
                         case GameType.Menu_Play_Solo_world1_lvl3:
-                           // d_w1l3_1.Draw(spritebatch);
-                            //d_w1l3_2.Draw(spritebatch);
+                            d_w1l3.Draw(spritebatch);
                             casper.Draw(spritebatch, Color.White);
                             // IA
                             break;
@@ -494,8 +491,7 @@ namespace Projet_2._0
                             // IA
                             break;
                         case GameType.Menu_Play_Solo_world1_lvl3:
-                            d_w1l3_1.Draw(spritebatch);
-                            d_w1l3_2.Draw(spritebatch);
+                            d_w1l3.Draw(spritebatch);
                             casper.Draw(spritebatch, Color.White);
                             // IA
                             break;
