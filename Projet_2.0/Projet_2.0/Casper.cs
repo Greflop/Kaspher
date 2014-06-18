@@ -52,7 +52,7 @@ namespace Projet_2._0
             Velocity = controls.getVelocity();
             casper = animation.getText(animation.getState(Position, previousPosition),gametype);
             camera.update(gametime, this.Position);
-            particleEngine.EmitterLocation = new Vector2(Position.X + casper.Width/2, Position.Y + 25) ;
+            particleEngine.EmitterLocation = new Vector2(Position.X + this.Hitbox.Width/2, Position.Y + 25) ;
             particleEngine.Update();
         }
 

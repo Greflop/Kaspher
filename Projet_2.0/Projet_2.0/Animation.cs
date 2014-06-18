@@ -50,7 +50,7 @@ namespace Projet_2._0
 
         public Texture2D getText(State state,GameType gametype)
         {
-            if (gametype == GameType.Menu_Play_Solo_world1_lvl1 || gametype == GameType.Menu_Play_Multi_Type)
+            if (gametype == GameType.Menu_Play_Solo_world1_lvl1 || gametype == GameType.Menu_Play_Multi_Type || gametype == GameType.Menu_Play_Solo_world1_lvl2 || gametype == GameType.Menu_Play_Solo_world1_lvl3)
             {
                 if (state == State.Basic)
                     texture = Content_Manager.getInstance().Textures["Casper"];
@@ -85,7 +85,7 @@ namespace Projet_2._0
                 else if (state == State.Falling)
                     texture = Content_Manager.getInstance().Textures["Casper/CasperFall"];
             }
-            else if (gametype == GameType.Menu_Play_Solo_world2_lvl1)
+            else if (gametype == GameType.Menu_Play_Solo_world2_lvl1 || gametype == GameType.Menu_Play_Solo_world2_lvl2 || gametype == GameType.Menu_Play_Solo_world2_lvl3)
             {
                 if (state == State.Basic)
                     texture = Content_Manager.getInstance().Textures["Player1"];
