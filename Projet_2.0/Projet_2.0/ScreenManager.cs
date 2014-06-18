@@ -48,7 +48,7 @@ namespace Projet_2._0
         Menu_Play_Solo_World2 menusolo2;
         Menu_Pause menupause;
         Menu_Pause_Options menupauseoption;
-        Decors decors, d_w2l1, d_w2l2, d_w2l3, decors1, decors2, d_w1l1_1, d_w1l1_2, d_w1l2_1, d_w1l2_2, d_w1l3_1, d_w1l3_2;
+        Decors  d_w2l1, d_w2l2, d_w2l3, d_w1l1_1, d_w1l1_2, d_w1l2_1, d_w1l2_2, d_w1l3_1, d_w1l3_2;
         public Camera camera;
         AI_basic AI1;
         AI_moderate AI2;
@@ -91,7 +91,7 @@ namespace Projet_2._0
             Game1.GetGame().casperr = casper;
             d_w2l1 = new Decors(Content_Manager.getInstance().Textures["W2L1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             d_w2l2 = new Decors(Content_Manager.getInstance().Textures["W2L2"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
-            d_w2l2 = new Decors(Content_Manager.getInstance().Textures["W2L3"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
+            d_w2l3 = new Decors(Content_Manager.getInstance().Textures["W2L3"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             menupause = new Menu_Pause(Content_Manager.getInstance().Textures["menupause"]);
             w1l1 = new W1L1(new Vector2(0, 0));
             w1l2 = new W1L2(new Vector2(0, 0));
@@ -307,10 +307,10 @@ namespace Projet_2._0
                 case GameType.Menu_Play_Solo_World2_Type:
                     menusolo2.Draw(spritebatch);
                     break;
+                    // world1 lvl 3
                 case GameType.Menu_Play_Multi_Type:
-                    decors.Draw(spritebatch);
-                    decors1.Draw(spritebatch);
-                    decors2.Draw(spritebatch);
+                    d_w1l1_1.Draw(spritebatch);
+                    d_w1l1_2.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     player2.Draw(spritebatch, Color.CornflowerBlue);
                     break;
