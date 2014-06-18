@@ -15,17 +15,17 @@ namespace Projet_2._0
         Rectangle mouseClick;
         MouseState mouseState, previousmouseState;
         KeyboardState keyboardstate, previouskeyboardstate;
-        
+
 
 
         public Menu_Base(Texture2D Text_Menu_base)
         {
-            
+
             this.Text_Menu_base = Text_Menu_base;
             Bouton_Play = new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310));
-            Bouton_Options = new Rectangle(Res.gI().ScaleX(995),Res.gI().ScaleY(210), Res.gI().ScaleX(255), Res.gI().ScaleY(310));
+            Bouton_Options = new Rectangle(Res.gI().ScaleX(995), Res.gI().ScaleY(210), Res.gI().ScaleX(255), Res.gI().ScaleY(310));
             Bouton_Exit = new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(280), Res.gI().ScaleX(165), Res.gI().ScaleY(80));
-            
+
 
         }
 
@@ -67,12 +67,7 @@ namespace Projet_2._0
 
         public void Draw(SpriteBatch spritebatch)
         {
-
-            spritebatch.Draw(Text_Menu_base, new Rectangle(0, 0,  Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
-            spritebatch.Draw(Text_Menu_base, new Rectangle(Res.gI().ScaleX(500), Res.gI().ScaleY(210), Res.gI().ScaleX(225), Res.gI().ScaleY(310)), Color.Black);
-            spritebatch.Draw(Text_Menu_base, new Rectangle(Res.gI().ScaleX(995),Res.gI().ScaleY(210), Res.gI().ScaleX(255), Res.gI().ScaleY(310)) , Color.Black);
-            spritebatch.Draw(Text_Menu_base, new Rectangle(Res.gI().ScaleX(755), Res.gI().ScaleY(280), Res.gI().ScaleX(165), Res.gI().ScaleY(80)), Color.Black);
-            
+            spritebatch.Draw(Text_Menu_base, new Rectangle(0, 0, Res.gI().ScaleX(1680), Res.gI().ScaleY(1050)), Color.White);
         }
 
     }

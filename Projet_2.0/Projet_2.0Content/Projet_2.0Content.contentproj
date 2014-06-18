@@ -126,11 +126,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Menu\Menu_Options.png">
-      <Name>Menu_Options</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Menu\Menu_Play.png">
       <Name>Menu_Play</Name>
       <Importer>TextureImporter</Importer>
@@ -190,13 +185,6 @@
   <ItemGroup>
     <Compile Include="Menu\Menu_pause.png">
       <Name>Menu_pause</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Menu\Menu_pause_option.png">
-      <Name>Menu_pause_option</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -366,6 +354,18 @@
     </Compile>
     <Compile Include="Niveaux\World2_lvl3.png">
       <Name>World2_lvl3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Menu\Menu_Options.png">
+      <Name>Menu_Options</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Menu\Menu_pause_option.png">
+      <Name>Menu_pause_option</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
