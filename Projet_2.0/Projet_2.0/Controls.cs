@@ -115,7 +115,7 @@ namespace Projet_2._0
                 previousPosition = Position;
 
             }
-            else if (gametype == GameType.Menu_Play_Solo_world2_lvl1)
+            else if (gametype == GameType.Menu_Play_Solo_world2_lvl1 || gametype == GameType.Menu_Play_Solo_world2_lvl2 || gametype == GameType.Menu_Play_Solo_world2_lvl3)
             {
                 if ((keyboardState.IsKeyUp(Left) && keyboardState.IsKeyUp(Right)) || (keyboardState.IsKeyDown(Left) && keyboardState.IsKeyDown(Right)))
                 {
