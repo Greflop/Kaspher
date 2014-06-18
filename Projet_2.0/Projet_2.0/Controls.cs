@@ -80,18 +80,10 @@ namespace Projet_2._0
                 }
                 
 
-               /* if (hasJumped == true)
+                /* if (hasJumped == true)
                 {
                     Velocity.Y += Acceleration.Y;
                 }*/
-
-
-                if (Position.Y > Res.gI().ScaleX(1015))
-                {
-                    Position.Y = Res.gI().ScaleX(1015);
-                    Velocity.Y = 0f;
-                    hasJumped = false;
-                }
 
                 previousKeyboardState = keyboardState;
                 hasJumped = true;
