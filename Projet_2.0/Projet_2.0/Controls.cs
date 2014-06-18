@@ -25,7 +25,7 @@ namespace Projet_2._0
         //Casper casper;
 
 
-        public Controls(Vector2 Position, Vector2 Velocity, float speed, Keys Up, Keys Left, Keys Right,Keys Down)
+        public Controls(Vector2 Position, Vector2 Velocity, float speed, Keys Up, Keys Left, Keys Right, Keys Down)
         {
             this.Up = Up;
             this.Left = Left;
@@ -46,6 +46,7 @@ namespace Projet_2._0
         {
             keyboardState = Keyboard.GetState();
             int delta = gametime.ElapsedGameTime.Milliseconds;
+            previousPosition = Position;
 
             if (gametype == GameType.Menu_Play_Solo_world1_lvl1 || gametype == GameType.Menu_Play_Solo_world1_lvl2 || gametype == GameType.Menu_Play_Solo_world1_lvl3 || gametype == GameType.Menu_Play_Multi_Type)
             {
@@ -78,12 +79,12 @@ namespace Projet_2._0
                     else if (Velocity.X < maxspeed)
                         Velocity.X += Acceleration.X;
                 }
-                
 
-               /* if (hasJumped == true)
-                {
-                    Velocity.Y += Acceleration.Y;
-                }*/
+
+                /* if (hasJumped == true)
+                 {
+                     Velocity.Y += Acceleration.Y;
+                 }*/
 
 
                 if (Position.Y > Res.gI().ScaleX(1015))
@@ -112,10 +113,10 @@ namespace Projet_2._0
                 }
 
                 Position += Velocity * speed;
-                previousPosition = Position;
+                //previousPosition = Position;
 
             }
-            else if (gametype == GameType.Menu_Play_Solo_world2_lvl1)
+            else if (gametype == GameType.Menu_Play_Solo_world2_lvl1 || gametype == GameType.Menu_Play_Solo_world2_lvl2 || gametype == GameType.Menu_Play_Solo_world2_lvl3)
             {
                 if ((keyboardState.IsKeyUp(Left) && keyboardState.IsKeyUp(Right)) || (keyboardState.IsKeyDown(Left) && keyboardState.IsKeyDown(Right)))
                 {
@@ -178,18 +179,18 @@ namespace Projet_2._0
                 }
 
                 previousKeyboardState = keyboardState;
-
+                Collision2(casper.Hitbox, level);
                 Position += Velocity * speed;
             }
         }
 
-        public Vector2 Collision(Rectangle casperHitbox, List<Rectangle> level1)
+        public Vector2 Collision(Rectangle casperHitbox, List<Rectangle> level)
         {
             //bool prevhasJumped;
-            foreach (Rectangle rect in level1)
+            foreach (Rectangle rect in level)
             {
                 //if (!(undercasper.Intersects(rect)))
-                  //  hasJumped = true;
+                //  hasJumped = true;
 
                 if (casperHitbox.Intersects(rect))
                 {
@@ -200,7 +201,7 @@ namespace Projet_2._0
                         {
                             Position.Y = rect.Top - Res.gI().ScaleY(35);
                             Velocity.Y = 0f;
-                            hasJumped =false;
+                            hasJumped = false;
                         }
                     }
                     else
@@ -235,9 +236,9 @@ namespace Projet_2._0
                     if (casperHitbox.Right >= rect.Left && casperHitbox.Left <= rect.Right)
                         hasJumped = false;
                 }
-                
-                
-                
+
+
+
             }
             return Velocity;
         }
@@ -257,7 +258,37 @@ namespace Projet_2._0
             return hasJumped;
         }
 
-        //public Vector2 Collision2(Rectangle casperHitbox, )
+        public void Collision2(Rectangle casperHitbox, List<Rectangle> level)
+        {
+            foreach (Rectangle rect in level)
+            {
 
+
+                if (casperHitbox.Intersects(rect))
+                {
+                    if (casperHitbox.Bottom <= rect.Top + Res.gI().ScaleY(7) && casperHitbox.Bottom >= rect.Top)
+                    {
+                        Position.Y = previousPosition.Y - 1;
+                        Velocity.Y = 0;
+                    }
+                    if (casperHitbox.Right <= rect.Left + Res.gI().ScaleX(10) && casperHitbox.Right >= rect.Left)
+                    {
+                        Position.X = previousPosition.X - 1;
+                        Velocity.X = 0;
+                    }
+                    if (casperHitbox.Left >= rect.Right - Res.gI().ScaleX(10) && casperHitbox.Left <= rect.Right)
+                    {
+                        Position.X = previousPosition.X + 1;
+                        Velocity.X = 0;
+                    }
+                    if (casperHitbox.Top >= rect.Bottom - Res.gI().ScaleY(10) && casperHitbox.Top <= rect.Bottom)
+                    {
+                        Position.Y = previousPosition.Y + 1;
+                        Velocity.Y = 0;
+                    }
+                }
+            }
+
+        }
     }
 }

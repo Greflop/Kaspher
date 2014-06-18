@@ -49,6 +49,7 @@ namespace Projet_2._0
         Menu_Pause menupause;
         Menu_Pause_Options menupauseoption;
         Decors decors, d_w2l1, d_w2l2, d_w2l3, decors1, decors2, d_w1l1_1, d_w1l1_2, d_w1l2_1, d_w1l2_2, d_w1l3_1, d_w1l3_2;
+        //Decors d_w2l1, d_w2l2, d_w2l3, decors1, decors2, d_w1l1_1, d_w1l1_2, d_w1l2_1, d_w1l2_2, d_w1l3_1, d_w1l3_2;
         public Camera camera;
         AI_basic AI1;
         AI_moderate AI2;
