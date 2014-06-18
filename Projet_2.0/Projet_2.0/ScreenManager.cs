@@ -84,9 +84,9 @@ namespace Projet_2._0
             respawn = true;
 
             d_w1l1_1 = new Decors(Content_Manager.getInstance().Textures["W1L1_1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
-            d_w1l1_2 = new Decors(Content_Manager.getInstance().Textures["W1L1_2"], new Rectangle(2520, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
+            d_w1l1_2 = new Decors(Content_Manager.getInstance().Textures["W1L1_2"], new Rectangle(Res.gI().ScaleX(2520), 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             d_w1l2_1 = new Decors(Content_Manager.getInstance().Textures["W1L2_1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
-            d_w1l2_2 = new Decors(Content_Manager.getInstance().Textures["W1L2_2"], new Rectangle(2520, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
+            d_w1l2_2 = new Decors(Content_Manager.getInstance().Textures["W1L2_2"], new Rectangle(Res.gI().ScaleX(2520), 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             //d_w1l3_1 = new Decors(Content_Manager.getInstance().Textures["W1L3_1"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             //d_w1l3_2 = new Decors(Content_Manager.getInstance().Textures["W1L3_2"], new Rectangle(2520, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
 
@@ -196,7 +196,7 @@ namespace Projet_2._0
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
                     if (previousgametype == GameType.Menu_Play_Solo_World1_Type && respawn == true)
                     {
-                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(925));
+                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(245));
                         respawn = false;
                     }
                     if (casper.Position.X > Res.gI().ScaleX(840))

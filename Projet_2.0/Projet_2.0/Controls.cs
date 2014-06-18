@@ -81,19 +81,6 @@ namespace Projet_2._0
                 }
 
 
-                /* if (hasJumped == true)
-                 {
-                     Velocity.Y += Acceleration.Y;
-                 }*/
-
-
-                if (Position.Y > Res.gI().ScaleX(1015))
-                {
-                    Position.Y = Res.gI().ScaleX(1015);
-                    Velocity.Y = 0f;
-                    hasJumped = false;
-                }
-
                 previousKeyboardState = keyboardState;
                 hasJumped = true;
                 Velocity = Collision(casper.Hitbox, level);
@@ -236,9 +223,6 @@ namespace Projet_2._0
                     if (casperHitbox.Right >= rect.Left && casperHitbox.Left <= rect.Right)
                         hasJumped = false;
                 }
-
-
-
             }
             return Velocity;
         }
@@ -288,7 +272,6 @@ namespace Projet_2._0
                     }
                 }
             }
-
         }
     }
 }

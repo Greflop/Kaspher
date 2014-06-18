@@ -37,6 +37,7 @@ namespace Projet_2._0.Levels
             w1l2.Add(new Rectangle(Res.gI().ScaleX(3560), Res.gI().ScaleY(480), Res.gI().ScaleX(80), Res.gI().ScaleY(280))); //spikes
             w1l2.Add(new Rectangle(Res.gI().ScaleX(3640), Res.gI().ScaleY(480), Res.gI().ScaleX(80), Res.gI().ScaleY(280)));
             w1l2.Add(new Rectangle(Res.gI().ScaleX(4440), Res.gI().ScaleY(760), Res.gI().ScaleX(240), Res.gI().ScaleY(80)));
+            w1l2.Add(new Rectangle(Res.gI().ScaleX(4920), Res.gI().ScaleY(80), Res.gI().ScaleX(120), Res.gI().ScaleY(880)));
         }
 
         public List<Rectangle> getList()

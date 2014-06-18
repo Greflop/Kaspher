@@ -40,6 +40,14 @@ Content\PlayerWorld2\PlayerGauche3.xnb
 Content\PlayerWorld2\PlayerGauche4.xnb
 Content\PlayerWorld2\PlayerHaut1.xnb
 Content\Decors\world2vert.xnb
+<<<<<<< HEAD
+=======
+Content\Fontdebug.xnb
+Content\Songs\Ambiance.xnb
+Content\Songs\Ambiance_Pause.xnb
+Content\Songs\Ambiance_ingame.xnb
+Content\Songs\Jump.xnb
+>>>>>>> c6ece62ef8333bf9b3210c2e539ab7fb3f5e3691
 Content\Particules\particule.xnb
 Content\AI\enemy1.xnb
 Content\AI\enemy1.1.xnb
