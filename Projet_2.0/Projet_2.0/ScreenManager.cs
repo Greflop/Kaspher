@@ -49,7 +49,7 @@ namespace Projet_2._0
         Menu_Play_Solo_World2 menusolo2;
         Menu_Pause menupause;
         Menu_Pause_Options menupauseoption;
-        Decors  d_w2l1, d_w2l2, d_w2l3, d_w1l1_1, d_w1l1_2, d_w1l2_1, d_w1l2_2, d_w1l3;
+        Decors d_w2l1, d_w2l2, d_w2l3, d_w1l1_1, d_w1l1_2, d_w1l2_1, d_w1l2_2, d_w1l3;
         public Camera camera;
         AI_basic AI1;
         AI_moderate AI2;
@@ -61,6 +61,7 @@ namespace Projet_2._0
         W1L1 w1l1;
         W1L2 w1l2;
         W1L3 w1l3;
+        Spikes spikes;
         public ScreenManager(GameType gametype, Game1 game)
         {
             menubase = new Menu_Base(Content_Manager.getInstance().Textures["menubase"]);
@@ -94,15 +95,16 @@ namespace Projet_2._0
             d_w2l2 = new Decors(Content_Manager.getInstance().Textures["W2L2"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             d_w2l3 = new Decors(Content_Manager.getInstance().Textures["W2L3"], new Rectangle(0, 0, Res.gI().ScaleX(2520), Res.gI().ScaleY(1050)));
             menupause = new Menu_Pause(Content_Manager.getInstance().Textures["menupause"]);
-            w1l1 = new W1L1(new Vector2(0, 0));
-            w1l2 = new W1L2(new Vector2(0, 0));
-            w1l3 = new W1L3(new Vector2(0, 0));
-            w2l1 = new W2L1(new Vector2(0, 0));
-            w2l2 = new W2L2(new Vector2(0, 0));
-            w2l3 = new W2L3(new Vector2(0, 0));
+            w1l1 = new W1L1();
+            w1l2 = new W1L2();
+            w1l3 = new W1L3();
+            w2l1 = new W2L1();
+            w2l2 = new W2L2();
+            w2l3 = new W2L3();
+            spikes = new Spikes();
             previousgametype = GameType.Exit;
-            AI1 = new AI_basic(Content_Manager.getInstance().Textures["enemy1"],Content_Manager.getInstance().Textures["enemy2"], new Rectangle(0, 0, Res.gI().ScaleX(20), Res.gI().ScaleY(20)));
-            AI2 = new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(100) ,Res.gI().ScaleY(100),Res.gI().ScaleX(50) ,Res.gI().ScaleY(50)));
+            AI1 = new AI_basic(Content_Manager.getInstance().Textures["enemy1"], Content_Manager.getInstance().Textures["enemy2"], new Rectangle(0, 0, Res.gI().ScaleX(20), Res.gI().ScaleY(20)));
+            AI2 = new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(100), Res.gI().ScaleY(100), Res.gI().ScaleX(50), Res.gI().ScaleY(50)));
             this.gametype = gametype;
         }
 
@@ -116,6 +118,9 @@ namespace Projet_2._0
                     menubase.update(gametime, ref gametype, ref previousgametype);
                     previousgametype = GameType.Exit;
                     respawn = true;
+                    casper.healthpoint.healthpoint = 13;
+                    casper2.healthpoint.healthpoint = 13;
+                    //player2.healthpoint.healthpoint = 13;
                     break;
                 case GameType.Menu_Play_Type:
                     menuplay.update(gametime, ref gametype, ref previousgametype);
@@ -138,22 +143,22 @@ namespace Projet_2._0
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
                     if (previousgametype == GameType.Menu_Play_Solo_World1_Type && respawn == true)
                     {
-                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(925));
+                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(924));
                         respawn = false;
                     }
                     if (casper.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper.Position);
                     if (casper.Position.X > Res.gI().ScaleX(4200))
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
-                    casper.update(gametime, controls, gametype, w1l1.getList());
-                    player2.update(gametime, controlsPlayer2, gametype, w1l1.getList());
+                    casper.update(gametime, controls, gametype, w1l1.getList(), spikes.getList());
+                    player2.update(gametime, controlsPlayer2, gametype, w1l1.getList(), spikes.getList());
 
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
                         previousgametype = GameType.Menu_Play_Multi_Type;
-                        casper.update(gametime, controls, gametype, w1l1.getList());
-                        player2.update(gametime, controlsPlayer2, gametype, w1l1.getList());
+                        casper.update(gametime, controls, gametype, w1l1.getList(), spikes.getList());
+                        player2.update(gametime, controlsPlayer2, gametype, w1l1.getList(), spikes.getList());
 
                         Game1.GetGame().IsMouseVisible = true;
                         MediaPlayer.Stop();
@@ -169,17 +174,20 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl1:
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
-                    if (previousgametype == GameType.Menu_Play_Solo_World1_Type && respawn == true)
+                    if (respawn == true || casper.healthpoint.respawn == true)
                     {
-                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(925));
+                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(924));
                         respawn = false;
+                        casper.healthpoint.respawn = false;
                     }
                     if (casper.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper.Position);
                     if (casper.Position.X > Res.gI().ScaleX(4200))
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
-                    casper.update(gametime, controls, gametype, w1l1.getList());
-                    AI1.update(gametime,Res.gI().ScaleX(960),Res.gI().ScaleY(1290));
+
+                    Game1.GetGame().casperr = casper;
+                    casper.update(gametime, controls, gametype, w1l1.getList(), spikes.getList());
+                    AI1.update(gametime, Res.gI().ScaleX(960), Res.gI().ScaleY(1290));
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
@@ -193,16 +201,18 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl2:
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
-                    if (previousgametype == GameType.Menu_Play_Solo_World1_Type && respawn == true)
+                    if (respawn == true)
                     {
-                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(245));
+                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(244));
                         respawn = false;
                     }
                     if (casper.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper.Position);
                     if (casper.Position.X > Res.gI().ScaleX(4200))
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
-                    casper.update(gametime, controls, gametype, w1l2.getList());
+
+                    Game1.GetGame().casperr = casper;
+                    casper.update(gametime, controls, gametype, w1l2.getList(), spikes.getList());
                     Game1.GetGame().IsMouseVisible = false;
                     // IA
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
@@ -217,16 +227,19 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl3:
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
-                    if (previousgametype == GameType.Menu_Play_Solo_World1_Type && respawn == true)
+                    if (respawn == true)
                     {
-                        controls.Position = new Vector2(Res.gI().ScaleX(80), Res.gI().ScaleY(550));//spawn position
+                        controls.Position = new Vector2(Res.gI().ScaleX(80), Res.gI().ScaleY(549));//spawn position
                         respawn = false;
                     }
                     if (casper.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper.Position);
                     if (casper.Position.X > Res.gI().ScaleX(1400))
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1400), 0));
-                    casper.update(gametime, controls, gametype, w1l3.getList());
+
+                    Game1.GetGame().casperr = casper;
+                    casper.update(gametime, controls, gametype, w1l3.getList(), spikes.getList());
+
                     Game1.GetGame().IsMouseVisible = false;
                     // IA
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
@@ -241,9 +254,9 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
-                    if (previousgametype == GameType.Menu_Play_Solo_World2_Type && respawn == true)
+                    if (respawn == true)
                     {
-                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(925));
+                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(924));
                         respawn = false;
                     }
                     if (casper2.Position.X > Res.gI().ScaleX(840))
@@ -252,8 +265,8 @@ namespace Projet_2._0
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
 
                     Game1.GetGame().casperr = casper2;
-                    casper2.update(gametime, controlsWorld2, gametype,w2l1.getList());
-                    AI2.update(gametime,casper2);
+                    casper2.update(gametime, controlsWorld2, gametype, w2l1.getList(), new List<Rectangle>());
+                    AI2.update(gametime, casper2);
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
@@ -269,9 +282,9 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl2:
                     previousgametype = GameType.Menu_Play_Solo_World2_Type;
-                    if (previousgametype == GameType.Menu_Play_Solo_World1_Type && respawn == true)
+                    if (respawn == true)
                     {
-                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(925));
+                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(924));
                         respawn = false;
                     }
                     if (casper2.Position.X > Res.gI().ScaleX(840))
@@ -280,7 +293,7 @@ namespace Projet_2._0
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
 
                     Game1.GetGame().casperr = casper2;
-                    casper2.update(gametime, controlsWorld2, gametype,w2l2.getList());
+                    casper2.update(gametime, controlsWorld2, gametype, w2l2.getList(), new List<Rectangle>());
                     Game1.GetGame().IsMouseVisible = false;
                     // IA
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
@@ -296,9 +309,9 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl3:
                     previousgametype = GameType.Menu_Play_Solo_World2_Type;
-                    if (previousgametype == GameType.Menu_Play_Solo_World1_Type && respawn == true)
+                    if (respawn == true)
                     {
-                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(925));
+                        controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(924));
                         respawn = false;
                     }
                     if (casper2.Position.X > Res.gI().ScaleX(840))
@@ -307,7 +320,7 @@ namespace Projet_2._0
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
 
                     Game1.GetGame().casperr = casper2;
-                    casper2.update(gametime, controlsWorld2, gametype,w2l3.getList());
+                    casper2.update(gametime, controlsWorld2, gametype, w2l3.getList(), new List<Rectangle>());
                     Game1.GetGame().IsMouseVisible = false;
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
                     {
@@ -325,23 +338,24 @@ namespace Projet_2._0
                 case GameType.Menu_Pause:
                     if (previousgametype == GameType.Menu_Play_Solo_world2_lvl1 || previousgametype == GameType.Menu_Play_Solo_world2_lvl2 || previousgametype == GameType.Menu_Play_Solo_world2_lvl3)
                     {
-                        if (true)
-                        {
-                            if (casper2.Position.X > Res.gI().ScaleX(840))
-                                camera.update(gametime, casper2.Position);
-                            if (casper2.Position.X > Res.gI().ScaleX(1680))
-                                camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
-                        }
+                        if (casper2.Position.X > Res.gI().ScaleX(840))
+                            camera.update(gametime, casper2.Position);
+                        if (casper2.Position.X > Res.gI().ScaleX(1680))
+                            camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
                     }
-                    if (previousgametype == GameType.Menu_Play_Solo_world1_lvl1 || previousgametype == GameType.Menu_Play_Solo_world1_lvl2 || previousgametype == GameType.Menu_Play_Solo_world1_lvl3)
+                    if (previousgametype == GameType.Menu_Play_Solo_world1_lvl3)
                     {
-                        if (true)
-                        {
-                            if (casper.Position.X > Res.gI().ScaleX(840))
-                                camera.update(gametime, casper.Position);
-                            if (casper.Position.X > Res.gI().ScaleX(4200))
-                                camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
-                        }
+                        if (casper.Position.X > Res.gI().ScaleX(840))
+                            camera.update(gametime, casper.Position);
+                        if (casper.Position.X > Res.gI().ScaleX(1400))
+                            camera.update(gametime, new Vector2(Res.gI().ScaleX(1400), 0));
+                    }
+                    if (previousgametype == GameType.Menu_Play_Solo_world1_lvl1 || previousgametype == GameType.Menu_Play_Solo_world1_lvl2)
+                    {
+                        if (casper.Position.X > Res.gI().ScaleX(840))
+                            camera.update(gametime, casper.Position);
+                        if (casper.Position.X > Res.gI().ScaleX(4200))
+                            camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
                     }
 
                     //camera.update(gametime, casper.Position);
@@ -360,23 +374,24 @@ namespace Projet_2._0
                     //camera.update(gametime, casper.Position);
                     if (previousgametype == GameType.Menu_Play_Solo_world2_lvl1 || previousgametype == GameType.Menu_Play_Solo_world2_lvl2 || previousgametype == GameType.Menu_Play_Solo_world2_lvl3)
                     {
-                        if (true)
-                        {
-                            if (casper2.Position.X > Res.gI().ScaleX(840))
-                                camera.update(gametime, casper2.Position);
-                            if (casper2.Position.X > Res.gI().ScaleX(1680))
-                                camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
-                        }
+                        if (casper2.Position.X > Res.gI().ScaleX(840))
+                            camera.update(gametime, casper2.Position);
+                        if (casper2.Position.X > Res.gI().ScaleX(1680))
+                            camera.update(gametime, new Vector2(Res.gI().ScaleX(1680), 0));
                     }
-                    if (previousgametype == GameType.Menu_Play_Solo_world1_lvl1 || previousgametype == GameType.Menu_Play_Solo_world1_lvl2 || previousgametype == GameType.Menu_Play_Solo_world1_lvl3)
+                    if (previousgametype == GameType.Menu_Play_Solo_world1_lvl3)
                     {
-                        if (true)
-                        {
-                            if (casper.Position.X > Res.gI().ScaleX(840))
-                                camera.update(gametime, casper.Position);
-                            if (casper.Position.X > Res.gI().ScaleX(4200))
-                                camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
-                        }
+                        if (casper.Position.X > Res.gI().ScaleX(840))
+                            camera.update(gametime, casper.Position);
+                        if (casper.Position.X > Res.gI().ScaleX(1400))
+                            camera.update(gametime, new Vector2(Res.gI().ScaleX(1400), 0));
+                    }
+                    if (previousgametype == GameType.Menu_Play_Solo_world1_lvl1 || previousgametype == GameType.Menu_Play_Solo_world1_lvl2)
+                    {
+                        if (casper.Position.X > Res.gI().ScaleX(840))
+                            camera.update(gametime, casper.Position);
+                        if (casper.Position.X > Res.gI().ScaleX(4200))
+                            camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
                     }
                     menupauseoption.update(gametime, ref gametype, ref previousgametype, camera.centre);
                     break;
@@ -404,7 +419,7 @@ namespace Projet_2._0
                 case GameType.Menu_Play_Solo_World2_Type:
                     menusolo2.Draw(spritebatch);
                     break;
-                    // world1 lvl 3
+                // world1 lvl 3
                 case GameType.Menu_Play_Multi_Type:
                     d_w1l1_1.Draw(spritebatch);
                     d_w1l1_2.Draw(spritebatch);
@@ -419,32 +434,38 @@ namespace Projet_2._0
                     d_w1l1_2.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     AI1.Draw(spritebatch);
+                    casper.healthpoint.draw(spritebatch, camera);
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl2:
                     d_w1l2_1.Draw(spritebatch);
                     d_w1l2_2.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
+                    casper.healthpoint.draw(spritebatch, camera);
                     // IA
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl3:
                     d_w1l3.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
+                    casper.healthpoint.draw(spritebatch, camera);
                     // IA
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
                     d_w2l1.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
                     AI2.Draw(spritebatch);
+                    casper2.healthpoint.draw(spritebatch, camera);
                     //IA
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl2:
                     d_w2l2.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
+                    casper2.healthpoint.draw(spritebatch, camera);
                     // IA
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl3:
                     d_w2l3.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
+                    casper2.healthpoint.draw(spritebatch, camera);
                     // IA
                     break;
                 case GameType.Menu_Pause:

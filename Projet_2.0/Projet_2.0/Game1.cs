@@ -142,7 +142,9 @@ namespace Projet_2._0
             spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getVelocity().Y), new Vector2(camera.centre.X + 10, camera.centre.Y + 25), Color.Red);
             spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getPosition().X), new Vector2(camera.centre.X + 10, camera.centre.Y + 40), Color.Red);
             spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.getPosition().Y), new Vector2(camera.centre.X + 10, camera.centre.Y + 55), Color.Red);
-            spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.hasJumped), new Vector2(camera.centre.X + 10, camera.centre.Y + 70), Color.Red);
+            //spriteBatch.DrawString(fontdebug, Convert.ToString(casperr.hasJumped), new Vector2(camera.centre.X + 10, camera.centre.Y + 70), Color.Red);
+            spriteBatch.DrawString(fontdebug, Convert.ToString(screenmanager.respawn), new Vector2(camera.centre.X + 10, camera.centre.Y + 70), Color.Red);
+
             //casper.Draw(spriteBatch);
             spriteBatch.End();
 

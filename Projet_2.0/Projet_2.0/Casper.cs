@@ -23,6 +23,7 @@ namespace Projet_2._0
         public GameType gametype;
         public Boolean hasJumped;
         public ParticleEngine particleEngine;
+        public HealthPoint healthpoint;
 
         public Casper(Texture2D casper, Rectangle hitbox) : base(2, casper, hitbox)
         {
@@ -35,12 +36,15 @@ namespace Projet_2._0
             List<Texture2D> textures = new List<Texture2D>();
             textures.Add(Content_Manager.getInstance().Textures["particule"]);
             particleEngine = new ParticleEngine(textures, new Vector2(Res.gI().ScaleX(400), Res.gI().ScaleY(240)));
+            healthpoint = new HealthPoint(13);
+
 
         }
 
 
-        public void update(GameTime gametime, Controls controls, GameType gametype, List<Rectangle> level)
+        public void update(GameTime gametime, Controls controls, GameType gametype, List<Rectangle> level,List<Rectangle> spikes )
         {
+            healthpoint.update(this, spikes);
             animation.update(gametime, gametype);
             previousPosition = Position;
             //controls.update(gametime, gametype, this, level);
@@ -64,7 +68,6 @@ namespace Projet_2._0
             //particuleengine.Draw(spritebatch);
             particleEngine.Draw(spritebatch);
             spritebatch.Draw(casper, Position, color);
-
         }
     }
 }

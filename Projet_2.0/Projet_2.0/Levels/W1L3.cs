@@ -10,7 +10,7 @@ namespace Projet_2._0.Levels
     {
         List<Rectangle> w1l3 = new List<Rectangle>();
 
-        public W1L3(Vector2 Position)
+        public W1L3()
         {
             w1l3.Add(new Rectangle(Res.gI().ScaleX(0), Res.gI().ScaleY(0), Res.gI().ScaleX(2240), Res.gI().ScaleY(80)));
             w1l3.Add(new Rectangle(Res.gI().ScaleX(0), Res.gI().ScaleY(80), Res.gI().ScaleX(40), Res.gI().ScaleY(880)));

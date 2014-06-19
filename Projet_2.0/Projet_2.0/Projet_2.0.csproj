@@ -116,6 +116,7 @@
     <Compile Include="Content_Manager.cs" />
     <Compile Include="Controls.cs" />
     <Compile Include="Decors.cs" />
+    <Compile Include="HealthPoint.cs" />
     <Compile Include="Level1.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Levels\W1L1.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Res.cs" />
     <Compile Include="ScreenManager.cs" />
     <Compile Include="SoundManager.cs" />
+    <Compile Include="Spikes.cs" />
     <Compile Include="Triangle.cs" />
   </ItemGroup>
   <ItemGroup>
