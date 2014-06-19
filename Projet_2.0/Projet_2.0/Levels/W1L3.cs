@@ -10,7 +10,7 @@ namespace Projet_2._0.Levels
     {
         List<Rectangle> w1l3 = new List<Rectangle>();
 
-        public W1L3(Vector2 Position)
+        public W1L3()
         {
         }
 
