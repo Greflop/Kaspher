@@ -119,6 +119,7 @@
     <Compile Include="HealthPoint.cs" />
     <Compile Include="Level1.cs" />
     <Compile Include="Camera.cs" />
+    <Compile Include="Spikes\Sw1l2.cs" />
     <Compile Include="Levels\W1L1.cs" />
     <Compile Include="Levels\W1L2.cs" />
     <Compile Include="Levels\W1L3.cs" />
@@ -145,7 +146,8 @@
     <Compile Include="Res.cs" />
     <Compile Include="ScreenManager.cs" />
     <Compile Include="SoundManager.cs" />
-    <Compile Include="Spikes.cs" />
+    <Compile Include="Spikes\Spikes.cs" />
+    <Compile Include="Sw1l3.cs" />
     <Compile Include="Triangle.cs" />
   </ItemGroup>
   <ItemGroup>

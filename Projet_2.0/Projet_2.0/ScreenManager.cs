@@ -62,6 +62,8 @@ namespace Projet_2._0
         W1L2 w1l2;
         W1L3 w1l3;
         Spikes spikes;
+        Sw1l2 sw1l2;
+        Sw1l3 sw1l3;
         public ScreenManager(GameType gametype, Game1 game)
         {
             menubase = new Menu_Base(Content_Manager.getInstance().Textures["menubase"]);
@@ -102,6 +104,8 @@ namespace Projet_2._0
             w2l2 = new W2L2();
             w2l3 = new W2L3();
             spikes = new Spikes();
+            sw1l2 = new Sw1l2();
+            sw1l3 = new Sw1l3();
             previousgametype = GameType.Exit;
             AI1 = new AI_basic(Content_Manager.getInstance().Textures["enemy1"], Content_Manager.getInstance().Textures["enemy2"], new Rectangle(0, 0, Res.gI().ScaleX(20), Res.gI().ScaleY(20)));
             AI2 = new AI_moderate(Content_Manager.getInstance().Textures["enemy1"], new Rectangle(Res.gI().ScaleX(100), Res.gI().ScaleY(100), Res.gI().ScaleX(50), Res.gI().ScaleY(50)));
@@ -118,7 +122,7 @@ namespace Projet_2._0
                     menubase.update(gametime, ref gametype, ref previousgametype);
                     previousgametype = GameType.Exit;
                     respawn = true;
-                    casper.healthpoint.healthpoint = 13;
+                    casper.healthpoint.healthpoint = 15;
                     casper2.healthpoint.healthpoint = 13;
                     //player2.healthpoint.healthpoint = 13;
                     break;
@@ -201,10 +205,11 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl2:
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
-                    if (respawn == true)
+                    if (respawn == true || casper.healthpoint.respawn == true)
                     {
                         controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(244));
                         respawn = false;
+                        casper.healthpoint.respawn = false;
                     }
                     if (casper.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper.Position);
@@ -212,7 +217,7 @@ namespace Projet_2._0
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(4200), 0));
 
                     Game1.GetGame().casperr = casper;
-                    casper.update(gametime, controls, gametype, w1l2.getList(), spikes.getList());
+                    casper.update(gametime, controls, gametype, w1l2.getList(), sw1l2.getList());
                     Game1.GetGame().IsMouseVisible = false;
                     // IA
                     if (keyboardstate.IsKeyDown(Keys.Escape) && previouskeyboardstate.IsKeyUp(Keys.Escape))
@@ -227,10 +232,11 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl3:
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
-                    if (respawn == true)
+                    if (respawn == true || casper.healthpoint.respawn == true)
                     {
-                        controls.Position = new Vector2(Res.gI().ScaleX(80), Res.gI().ScaleY(549));//spawn position
+                        controls.Position = new Vector2(Res.gI().ScaleX(80), Res.gI().ScaleY(644));//spawn position
                         respawn = false;
+                        casper.healthpoint.respawn = false;
                     }
                     if (casper.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper.Position);
@@ -238,7 +244,7 @@ namespace Projet_2._0
                         camera.update(gametime, new Vector2(Res.gI().ScaleX(1400), 0));
 
                     Game1.GetGame().casperr = casper;
-                    casper.update(gametime, controls, gametype, w1l3.getList(), spikes.getList());
+                    casper.update(gametime, controls, gametype, w1l3.getList(), sw1l3.getList());
 
                     Game1.GetGame().IsMouseVisible = false;
                     // IA
@@ -254,10 +260,11 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
                     previousgametype = GameType.Menu_Play_Solo_World1_Type;
-                    if (respawn == true)
+                    if (respawn == true || casper2.healthpoint.respawn == true)
                     {
                         controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(924));
                         respawn = false;
+                        casper.healthpoint.respawn = false;
                     }
                     if (casper2.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper2.Position);
@@ -282,10 +289,11 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl2:
                     previousgametype = GameType.Menu_Play_Solo_World2_Type;
-                    if (respawn == true)
+                    if (respawn == true || casper2.healthpoint.respawn == true)
                     {
                         controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(924));
                         respawn = false;
+                        casper2.healthpoint.respawn = false;
                     }
                     if (casper2.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper2.Position);
@@ -309,10 +317,11 @@ namespace Projet_2._0
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl3:
                     previousgametype = GameType.Menu_Play_Solo_World2_Type;
-                    if (respawn == true)
+                    if (respawn == true || casper2.healthpoint.respawn == true)
                     {
                         controls.Position = new Vector2(Res.gI().ScaleX(200), Res.gI().ScaleY(924));
                         respawn = false;
+                        casper2.healthpoint.respawn = false;
                     }
                     if (casper2.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper2.Position);
