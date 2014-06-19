@@ -26,7 +26,7 @@ namespace Projet_2._0.Levels
             w1l2.Add(new Rectangle(Res.gI().ScaleX(760), Res.gI().ScaleY(360), Res.gI().ScaleX(240), Res.gI().ScaleY(80)));
             w1l2.Add(new Rectangle(Res.gI().ScaleX(800), Res.gI().ScaleY(640), Res.gI().ScaleX(240), Res.gI().ScaleY(80)));
             w1l2.Add(new Rectangle(Res.gI().ScaleX(1240), Res.gI().ScaleY(80), Res.gI().ScaleX(120), Res.gI().ScaleY(80)));
-            w1l2.Add(new Rectangle(Res.gI().ScaleX(1240), Res.gI().ScaleY(480), Res.gI().ScaleX(120), Res.gI().ScaleY(480)));
+            w1l2.Add(new Rectangle(Res.gI().ScaleX(1240), Res.gI().ScaleY(480), Res.gI().ScaleX(80), Res.gI().ScaleY(480)));
             w1l2.Add(new Rectangle(Res.gI().ScaleX(1320), Res.gI().ScaleY(560), Res.gI().ScaleX(960), Res.gI().ScaleY(80)));
             w1l2.Add(new Rectangle(Res.gI().ScaleX(1320), Res.gI().ScaleY(880), Res.gI().ScaleX(3600), Res.gI().ScaleY(80))); //spikes
             w1l2.Add(new Rectangle(Res.gI().ScaleX(2200), Res.gI().ScaleY(640), Res.gI().ScaleX(80), Res.gI().ScaleY(200)));

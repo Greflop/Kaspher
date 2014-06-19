@@ -224,8 +224,8 @@ namespace Projet_2._0
                     }
                     if (casper.Position.X > Res.gI().ScaleX(840))
                         camera.update(gametime, casper.Position);
-                    if (casper.Position.X > Res.gI().ScaleX(4200))
-                        camera.update(gametime, new Vector2(Res.gI().ScaleX(4200 ), 0));
+                    if (casper.Position.X > Res.gI().ScaleX(1400))
+                        camera.update(gametime, new Vector2(Res.gI().ScaleX(1400), 0));
                     casper.update(gametime, controls, gametype, w1l3.getList());
                     Game1.GetGame().IsMouseVisible = false;
                     // IA
