@@ -107,18 +107,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AI_basic.cs" />
-    <Compile Include="AI_moderate.cs" />
-    <Compile Include="Animated.cs" />
-    <Compile Include="Animation.cs" />
+    <Compile Include="AI\AI_basic.cs" />
+    <Compile Include="AI\AI_moderate.cs" />
+    <Compile Include="Vision\Animated.cs" />
+    <Compile Include="Vision\Animation.cs" />
     <Compile Include="Casper.cs" />
     <Compile Include="Collisions.cs" />
-    <Compile Include="Content_Manager.cs" />
+    <Compile Include="Managers\Content_Manager.cs" />
     <Compile Include="Controls.cs" />
     <Compile Include="Decors.cs" />
     <Compile Include="HealthPoint.cs" />
-    <Compile Include="Level1.cs" />
-    <Compile Include="Camera.cs" />
+    <Compile Include="Vision\Camera.cs" />
     <Compile Include="Spikes\Sw1l2.cs" />
     <Compile Include="Levels\W1L1.cs" />
     <Compile Include="Levels\W1L2.cs" />
@@ -143,11 +142,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="Res.cs" />
-    <Compile Include="ScreenManager.cs" />
-    <Compile Include="SoundManager.cs" />
+    <Compile Include="Vision\Res.cs" />
+    <Compile Include="Managers\ScreenManager.cs" />
+    <Compile Include="Managers\SoundManager.cs" />
     <Compile Include="Spikes\Spikes.cs" />
-    <Compile Include="Sw1l3.cs" />
+    <Compile Include="Spikes\Sw1l3.cs" />
     <Compile Include="Triangle.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,7 @@ namespace Projet_2._0
         public Texture2D texture;
         public Rectangle hitbox;
         public Rectangle aggro;
+        bool casperIsIntersecting = false;
 
 
         public AI_moderate(Texture2D texture, Rectangle hitbox)
@@ -29,6 +30,11 @@ namespace Projet_2._0
         {
             if (aggro.Intersects(casper.Hitbox))
             {
+                if (!casperIsIntersecting)
+                {
+                    SoundManager.alert.Play();
+                    casperIsIntersecting = true;
+                }
                 if (!hitbox.Intersects(casper.Hitbox))
                 {
                     Direction = new Vector2(casper.Position.X - hitbox.X, casper.Position.Y - hitbox.Y);
@@ -38,10 +44,15 @@ namespace Projet_2._0
                     Position += Direction * Velocity;
                     hitbox.X = (int)Position.X;
                     hitbox.Y = (int)Position.Y;
+
                 }
             }
             aggro.X = hitbox.X - Res.gI().ScaleX(500) / 2;
             aggro.Y = hitbox.Y - Res.gI().ScaleY(500) / 2;
+            if (!aggro.Intersects(casper.Hitbox))
+            {
+                casperIsIntersecting = false;
+            }
         }
 
         public void Draw(SpriteBatch spritebatch)

@@ -443,38 +443,38 @@ namespace Projet_2._0
                     d_w1l1_2.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
                     AI1.Draw(spritebatch);
-                    casper.healthpoint.draw(spritebatch, camera);
+                    casper.healthpoint.draw(spritebatch, camera,gametype);
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl2:
                     d_w1l2_1.Draw(spritebatch);
                     d_w1l2_2.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
-                    casper.healthpoint.draw(spritebatch, camera);
+                    casper.healthpoint.draw(spritebatch, camera, gametype);
                     // IA
                     break;
                 case GameType.Menu_Play_Solo_world1_lvl3:
                     d_w1l3.Draw(spritebatch);
                     casper.Draw(spritebatch, Color.White);
-                    casper.healthpoint.draw(spritebatch, camera);
+                    casper.healthpoint.draw(spritebatch, camera, gametype);
                     // IA
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl1:
                     d_w2l1.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
                     AI2.Draw(spritebatch);
-                    casper2.healthpoint.draw(spritebatch, camera);
+                    casper2.healthpoint.draw(spritebatch, camera, gametype);
                     //IA
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl2:
                     d_w2l2.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
-                    casper2.healthpoint.draw(spritebatch, camera);
+                    casper2.healthpoint.draw(spritebatch, camera, gametype);
                     // IA
                     break;
                 case GameType.Menu_Play_Solo_world2_lvl3:
                     d_w2l3.Draw(spritebatch);
                     casper2.Draw(spritebatch, Color.White);
-                    casper2.healthpoint.draw(spritebatch, camera);
+                    casper2.healthpoint.draw(spritebatch, camera, gametype);
                     // IA
                     break;
                 case GameType.Menu_Pause:

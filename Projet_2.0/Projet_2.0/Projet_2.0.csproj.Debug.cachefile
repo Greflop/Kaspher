@@ -55,7 +55,10 @@ Content\Fontdebug.xnb
 Content\Songs\Ambiance.xnb
 Content\Songs\Ambiance_Pause.xnb
 Content\Songs\Ambiance_ingame.xnb
-Content\Songs\Jump.xnb
+Content\Particules\Etoile.xnb
+Content\Songs\IA sound\Alert_AI.xnb
+Content\Songs\Casper sound\Jump.xnb
+Content\Songs\Casper sound\Hp_lost.xnb
 Content\Songs\Ambiance.wma
 Content\Songs\Ambiance_Pause.wma
 Content\Songs\Ambiance_ingame.wma

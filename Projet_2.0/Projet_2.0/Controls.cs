@@ -21,7 +21,6 @@ namespace Projet_2._0
         KeyboardState previousKeyboardState;
         KeyboardState keyboardState;
         Keys Up, Left, Right, Down;
-        Level1 level1;
         //Casper casper;
 
 
@@ -37,7 +36,6 @@ namespace Projet_2._0
             this.speed = speed;
             maxspeed = 500f;
             hasJumped = true;
-            level1 = new Level1(new Vector2(0, 0));
             previousPosition = Position;
         }
 

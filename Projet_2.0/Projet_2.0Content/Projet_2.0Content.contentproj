@@ -176,7 +176,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Songs\Jump.wav">
+    <Compile Include="Songs\Casper sound\Jump.wav">
       <Name>Jump</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
@@ -375,6 +375,27 @@
       <Name>W1L3</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Particules\Etoile.png">
+      <Name>Etoile</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Songs\IA sound\Alert_AI.wav">
+      <Name>Alert_AI</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Songs\Casper sound\Hp_lost.wav">
+      <Name>Hp_lost</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
